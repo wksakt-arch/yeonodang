@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>연어당 - 김포 장기동 연어·육회 전문점</title>
 
-  <!-- 기본 고급 폰트 유지 -->
+  <!-- 기본 고급 폰트 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
       box-sizing: border-box;
     }
 
-    /* 전체 분위기 : 어두우면서도 더 따뜻하게 */
+    /* 전체 분위기 : 어두우면서 따뜻하게 */
     body {
       font-family: "Noto Serif KR", serif;
       background: radial-gradient(circle at top, #2b1a14 0, #120f14 45%, #0b090e 100%);
@@ -85,7 +85,7 @@
       opacity: 1;
     }
 
-    /* 히어로 영역 : 네 이자카야 배경 */
+    /* 히어로 영역 : 업로드한 izakaya.png 사용 */
     .hero {
       position: relative;
       text-align: center;
@@ -98,7 +98,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url("izakaya.png"); /* 업로드한 사진 */
+      background-image: url("izakaya.png"); /* 파일 목록에 있는 이름 그대로 */
       background-size: cover;
       background-position: center;
       filter: brightness(0.45);
@@ -251,47 +251,60 @@
       opacity: 0.65;
     }
 
-   /* 갤러리 */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 10px;
-  margin-top: 24px;
-}
+    /* 갤러리 */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-top: 24px;
+    }
 
-.gallery-box {
-  position: relative;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #26262c;
-  height: 150px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
-}
-
-.gallery-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.gallery-box span {
-  position: absolute;
-  left: 10px;
-  bottom: 8px;
-  padding: 4px 10px;
-  font-size: 12px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.6);
-  color: #fce3cf;
-}
-
-    /* 지도 */
-    iframe {
-      width: 100%;
-      height: 300px;
+    .gallery-box {
+      position: relative;
       border-radius: 16px;
+      overflow: hidden;
+      background: #26262c;
+      height: 150px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
+
+    .gallery-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-box span {
+      position: absolute;
+      left: 10px;
+      bottom: 8px;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.6);
+      color: #fce3cf;
+    }
+
+    /* 지도 반응형 래퍼 */
+    .map-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 비율 */
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
       border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .map-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
     }
 
     /* 버튼 모음 (예약/배달 공통 스타일) */
@@ -326,6 +339,39 @@
       font-family: "Nanum Myeongjo", serif;
     }
 
+    /* 이미지 클릭 확대(모달) */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      inset: 0;
+      background-color: rgba(0,0,0,0.85);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-img {
+      max-width: 92%;
+      max-height: 92%;
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .modal-close:hover {
+      opacity: 1;
+    }
+
     /* 반응형 */
     @media (max-width: 720px) {
       .hero {
@@ -334,72 +380,13 @@
       .hero h1 {
         font-size: 34px;
       }
-      .nav {
-        flex-direction: row;
-      }
       nav a {
         font-size: 13px;
         margin-left: 10px;
       }
     }
-    /* ===== 이미지 클릭 확대(모달) ===== */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.85);
-  backdrop-filter: blur(4px);
-  justify-content: center;
-  align-items: center;
-}
-
-.modal-img {
-  max-width: 92%;
-  max-height: 92%;
-  border-radius: 14px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.7);
-}
-
-.modal-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 40px;
-  color: #fff;
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.modal-close:hover {
-  opacity: 1;
-}
-
   </style>
 </head>
-<script>
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modal-img");
-  const modalClose = document.querySelector(".modal-close");
-
-  document.querySelectorAll(".gallery-box img").forEach(img => {
-    img.addEventListener("click", () => {
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-    });
-  });
-
-  modalClose.onclick = () => {
-    modal.style.display = "none";
-  };
-
-  modal.onclick = (e) => {
-    if (e.target === modal) modal.style.display = "none";
-  };
-</script>
 
 <body>
 
@@ -485,7 +472,7 @@
     </ul>
   </section>
 
-  <!-- 배달/포장 전용 섹션 -->
+  <!-- 배달/포장 -->
   <section id="delivery">
     <h2>배달 · 포장 안내</h2>
     <p class="subtitle">집이나 가게에서 편하게 연어당을 즐기실 수 있습니다.</p>
@@ -496,55 +483,56 @@
     </p>
 
     <div class="btn-row" style="margin-top:16px;">
-      <!-- TODO: 실제 배달의민족/쿠팡이츠/요기요 링크로 변경 -->
       <a class="btn-small" href="#" target="_blank">배달의민족 주문하기</a>
       <a class="btn-small" href="#" target="_blank">쿠팡이츠 주문하기</a>
+      <a class="btn-small" href="#" target="_blank">요기요 주문하기</a>
     </div>
   </section>
 
   <!-- 갤러리 -->
   <section id="gallery">
-  <h2>갤러리</h2>
-  <p class="subtitle">매장 분위기와 음식 사진을 채울 예정입니다.</p>
+    <h2>갤러리</h2>
+    <p class="subtitle">매장 분위기와 음식 사진을 채워가는 공간입니다.</p>
 
-  <div class="gallery">
-    <div class="gallery-box">
-      <img src="육사시미.jpg" alt="육사시미">
-      <span>육사시미</span>
-    </div>
-    
-    <div class="gallery-box">
-      <img src="문어숙회.jpg" alt="문어숙회">
-      <span>문어숙회</span>
-    </div>
+    <div class="gallery">
+      <div class="gallery-box">
+        <img src="문어숙회.jpg" alt="문어숙회">
+        <span>문어숙회</span>
+      </div>
 
-    <div class="gallery-box">
-      <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
-      <span>우동 + 초밥</span>
-    </div>
+      <div class="gallery-box">
+        <img src="육사시미.jpg" alt="육사시미">
+        <span>육사시미</span>
+      </div>
 
-    <div class="gallery-box">
-      <img src="튀김+초밥.jpg" alt="튀김 + 초밥 세트">
-      <span>튀김 + 초밥</span>
-    </div>
-  </div>
-</section>
+      <div class="gallery-box">
+        <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
+        <span>우동 + 초밥</span>
+      </div>
 
-  <!-- 오시는 길 -->
+      <div class="gallery-box">
+        <img src="튀김+초밥.jpg" alt="튀김 + 초밥 세트">
+        <span>튀김 + 초밥</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 오시는 길 (네이버 지도) -->
   <section id="location">
-  <h2>오시는 길</h2>
-  <p class="subtitle">김포 장기동 1872-7 1층</p>
+    <h2>오시는 길</h2>
+    <p class="subtitle">김포 장기동 1872-7 1층</p>
 
-  <!-- 네이버 지도 퍼가기에서 복사한 iframe 전체를 아래에 붙여넣기 -->
-  <iframe
-    src=https://naver.me/5sG4MQIM></iframe>
-    width="100%"
-    height="300"
-    style="border:0; border-radius:16px;"
-    frameborder="0"
-    allowfullscreen
-  ></iframe>
-</section>
+    <div class="map-wrap">
+      <!-- 네이버 지도에서 ‘지도 퍼가기’로 받은 iframe 전체를
+           아래 iframe 안에 그대로 넣어도 되고,
+           src="" 부분만 교체해도 됨 -->
+      <iframe
+        src=""
+        allowfullscreen
+        loading="lazy">
+      </iframe>
+    </div>
+  </section>
 
   <!-- 예약 / 문의 -->
   <section id="contact">
@@ -552,12 +540,12 @@
     <p class="subtitle">편한 방식으로 연락 주세요.</p>
 
     <ul style="opacity:0.86; font-size:14px; line-height:1.9; margin-bottom:12px;">
-      <li>전화: 010-6398-7669 </li>
+      <li>전화: 010-0000-0000 (실제 번호로 교체)</li>
+      <li>단체 예약, 기념일 상차림, 포장 문의 가능</li>
     </ul>
 
     <div class="btn-row">
-      <!-- TODO: 실제 카카오채널 / 네이버 톡톡 링크로 교체 -->
-      <a class="btn-small" href="tel:01063987669">전화걸기</a>
+      <a class="btn-small" href="tel:01000000000">전화걸기</a>
       <a class="btn-small" href="#" target="_blank">카카오톡 채널 문의</a>
       <a class="btn-small" href="#" target="_blank">네이버 톡톡 문의</a>
     </div>
@@ -568,31 +556,32 @@
   </footer>
 
   <!-- 이미지 확대 모달 -->
-<div id="modal" class="modal">
-  <span class="modal-close">&times;</span>
-  <img id="modal-img" class="modal-img">
-</div>
+  <div id="modal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img id="modal-img" class="modal-img">
+  </div>
+
+  <!-- JS: 갤러리 이미지 클릭 시 확대 -->
+  <script>
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const modalClose = document.querySelector(".modal-close");
+
+    document.querySelectorAll(".gallery-box img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+      });
+    });
+
+    modalClose.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
 
 </body>
-  <script>
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modal-img");
-  const modalClose = document.querySelector(".modal-close");
-
-  document.querySelectorAll(".gallery-box img").forEach(img => {
-    img.addEventListener("click", () => {
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-    });
-  });
-
-  modalClose.onclick = () => {
-    modal.style.display = "none";
-  };
-
-  modal.onclick = (e) => {
-    if (e.target === modal) modal.style.display = "none";
-  };
-</script>
-
 </html>
