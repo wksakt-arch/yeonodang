@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>연어당 - 김포 장기동 연어·육회 전문점</title>
+
+  <!-- 고급 분위기 일본풍 + 세리프 느낌 폰트 적용 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
 
   <style>
     * {
@@ -12,11 +20,12 @@
       box-sizing: border-box;
     }
 
+    /* 전체 톤: 깊은 밤톤 */
     body {
-      font-family: "Noto Sans KR", sans-serif;
-      background: #FAF9F7; /* 밝은 아이보리 베이스 */
-      color: #222;
-      line-height: 1.6;
+      font-family: "Noto Serif KR", serif;
+      background: #0f0f12;
+      color: #e9e6e2;
+      line-height: 1.7;
     }
 
     a {
@@ -29,10 +38,10 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(10, 10, 14, 0.9);
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid #eee;
-      padding: 12px 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 15px 20px;
     }
 
     .nav {
@@ -41,132 +50,182 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      font-family: "Nanum Myeongjo", serif;
     }
 
     .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #ffb48b;
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      gap: 10px;
     }
 
     .logo-badge {
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #FFB48B, #FF8C5A);
+      background: linear-gradient(135deg, #ffb48b, #ff8c5a);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-      color: #fff;
+      color: #0f0f12;
+      font-weight: 800;
+      font-size: 15px;
+      border: 2px solid #0f0f12;
     }
 
     nav a {
       margin-left: 18px;
-      font-size: 14px;
-      opacity: 0.8;
+      font-size: 15px;
+      opacity: 0.78;
     }
 
     nav a:hover {
       opacity: 1;
     }
 
-    /* 공통 섹션 스타일 */
+    /* 히어로 영역 / 업로드한 이자카야 사진 */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 140px 20px;
+      overflow: hidden;
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("izakaya.png");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.38); /* 더 어둡고 감성적 */
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,140,90,0.3), rgba(0,0,0,0.85));
+      opacity: 0.9;
+      z-index: -1;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      padding-top: 20px;
+    }
+
+    .hero h1 {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+      color: #ffe7d5;
+      text-shadow: 0 0 12px rgba(0,0,0,0.6);
+    }
+
+    .hero h1 span {
+      color: #ffb48b;
+    }
+
+    .hero p {
+      font-size: 17px;
+      opacity: 0.92;
+      margin-bottom: 22px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+
+    .btn-primary,
+    .btn-outline {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 999px;
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 15px;
+      letter-spacing: 0.05em;
+      margin: 6px 4px;
+      border: 1px solid #ffb48b;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn-primary {
+      background: #ff8c5a;
+      color: #0f0f12;
+      font-weight: bold;
+    }
+
+    .btn-outline {
+      background: rgba(0,0,0,0.35);
+      color: #ffb48b;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,140,90,0.2);
+    }
+
+    /* 섹션 공통 */
     section {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 60px 20px;
+      padding: 70px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     h2 {
+      font-family: "Nanum Myeongjo", serif;
       font-size: 28px;
-      margin-bottom: 18px;
-      color: #FF8C5A;
-      font-weight: 700;
+      color: #ffb48b;
+      margin-bottom: 16px;
     }
 
     .subtitle {
       font-size: 15px;
+      opacity: 0.65;
       margin-bottom: 26px;
-      opacity: 0.7;
     }
-
-    /* ===== 이자카야 감성 히어로 배경 ===== */
-
-.hero {
-  position: relative;
-  text-align: center;
-  padding: 120px 20px;
-  color: #fff;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url("izakaya.png");
-  background-size: cover;
-  background-position: center;
-  filter: brightness(0.45);
-  z-index: -2;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-      circle at 30% 20%,
-      rgba(255, 140, 90, 0.35),
-      rgba(0, 0, 0, 0.85)
-    );
-  opacity: 0.9;               /* 따뜻한 연어색 조명 오버레이 */
-  z-index: -1;
-}
-
-.hero-inner {
-  position: relative;
-  max-width: 720px;
-  margin: 0 auto;
-}
 
     /* 메뉴 카드 */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 22px;
-      margin-top: 22px;
     }
 
     .menu-card {
-      background: #fff;
-      padding: 20px;
+      background: #1a1a1f;
+      padding: 22px;
       border-radius: 16px;
-      border: 1px solid #eee;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
     }
 
     .menu-name {
       font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 6px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffe7d5;
     }
 
     .menu-price {
-      color: #FF8C5A;
+      color: #ff8c5a;
       font-weight: 700;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      font-size: 15px;
     }
 
     .menu-desc {
       font-size: 14px;
       opacity: 0.7;
-      margin-bottom: 4px;
     }
 
     /* 갤러리 */
@@ -178,29 +237,30 @@
     }
 
     .gallery-box {
-      background: #f2f2f2;
+      background: #26262c;
       height: 130px;
       border-radius: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 12px;
       color: #777;
+      font-size: 13px;
     }
 
-    /* 오시는 길 */
+    /* 지도 */
     iframe {
       width: 100%;
       height: 300px;
       border-radius: 16px;
-      border: 1px solid #eee;
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     footer {
       text-align: center;
       padding: 30px;
       font-size: 12px;
-      opacity: 0.6;
+      opacity: 0.55;
+      font-family: "Nanum Myeongjo", serif;
     }
   </style>
 </head>
@@ -214,22 +274,21 @@
         <div class="logo-badge">연</div>
         YEONODANG
       </div>
-
       <nav>
         <a href="#menu">메뉴</a>
         <a href="#set">점심/세트</a>
         <a href="#gallery">갤러리</a>
-        <a href="#location">오시는 길</a>
+        <a href="#location">오시는길</a>
         <a href="#contact">문의</a>
       </nav>
     </div>
   </header>
 
-  <!-- 메인 히어로 -->
+  <!-- 히어로 -->
   <section class="hero">
     <div class="hero-inner">
       <h1>김포 장기동<br><span>연어 · 육회 전문점</span></h1>
-      <p>매일 손질한 연어와 육회를 가장 맛있는 타이밍에 제공합니다.</p>
+      <p>이자카야 감성 속에서 즐기는 연어당의 한 상.</p>
 
       <a class="btn-primary" href="#menu">메뉴 보기</a>
       <a class="btn-outline" href="#contact">예약 · 문의</a>
@@ -239,31 +298,31 @@
   <!-- 메뉴 -->
   <section id="menu">
     <h2>대표 메뉴</h2>
-    <p class="subtitle">연어당에서 가장 많이 찾는 시그니처 메뉴입니다.</p>
+    <p class="subtitle">연어당에서 가장 사랑받는 시그니처 메뉴입니다.</p>
 
     <div class="menu-grid">
       <div class="menu-card">
         <div class="menu-name">연어 모둠 사시미</div>
         <div class="menu-price">₩00,000</div>
-        <div class="menu-desc">두툼하게 썰어 올린 연어 모둠 한 접시.</div>
+        <div class="menu-desc">연어 특유의 고소함을 가장 만족스럽게.</div>
       </div>
 
       <div class="menu-card">
         <div class="menu-name">연어 + 육회 한 상</div>
         <div class="menu-price">₩00,000</div>
-        <div class="menu-desc">연어와 육회를 함께 즐기는 시그니처 구성.</div>
+        <div class="menu-desc">일본식 감성 속에서 즐기는 대표 한 상.</div>
       </div>
 
       <div class="menu-card">
         <div class="menu-name">연어덮밥</div>
         <div class="menu-price">₩00,000</div>
-        <div class="menu-desc">연어를 듬뿍 올린 인기 덮밥 메뉴.</div>
+        <div class="menu-desc">따뜻한 밥과 촉촉한 연어의 조화.</div>
       </div>
 
       <div class="menu-card">
         <div class="menu-name">한우 육사시미</div>
         <div class="menu-price">₩00,000</div>
-        <div class="menu-desc">깔끔한 육향과 부드러운 식감.</div>
+        <div class="menu-desc">정직한 재료로 승부하는 육사시미.</div>
       </div>
     </div>
   </section>
@@ -271,7 +330,7 @@
   <!-- 세트 -->
   <section id="set">
     <h2>점심 / 세트 메뉴</h2>
-    <p class="subtitle">가볍게 혹은 든든하게 즐기는 연어당 런치 구성.</p>
+    <p class="subtitle">연어당에서 가장 인기가 많은 런치 구성.</p>
 
     <ul style="opacity:0.8; font-size:15px; line-height:1.9;">
       <li>어묵우동 + 초밥(5p) 오마카세 세트</li>
@@ -284,7 +343,7 @@
   <!-- 갤러리 -->
   <section id="gallery">
     <h2>갤러리</h2>
-    <p class="subtitle">연어당의 음식과 분위기를 채워갈 공간입니다.</p>
+    <p class="subtitle">매장 분위기와 음식 사진을 채워갈 공간입니다.</p>
 
     <div class="gallery">
       <div class="gallery-box">사진자리</div>
@@ -296,27 +355,25 @@
   <!-- 오시는 길 -->
   <section id="location">
     <h2>오시는 길</h2>
-    <p class="subtitle">TODO: 실제 매장 주소 넣기</p>
+    <p class="subtitle">김포 장기동</p>
 
     <iframe src="https://maps.google.com/maps?q=김포%20장기동&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
   </section>
 
   <!-- 문의 -->
   <section id="contact">
-    <h2>예약 · 문의</h2>
+    <h2>예약 / 문의</h2>
+    <p class="subtitle">편한 방식으로 연락 주세요.</p>
 
-    <p style="opacity:0.75;">전화, 톡톡, 배달앱 메모 등 편하신 방식으로 연락 주세요.</p>
-
-    <ul style="margin-top:12px; opacity:0.8; font-size:15px;">
+    <ul style="opacity:0.8; font-size:15px; line-height:1.9;">
       <li>전화: 010-0000-0000</li>
-      <li>네이버: 스마트플레이스 ‘연어당’ 검색 후 톡톡</li>
-      <li>포장/배달 가능</li>
+      <li>네이버 톡톡 문의 가능</li>
+      <li>포장 및 일부 메뉴 배달 가능</li>
     </ul>
   </section>
 
   <footer>
     © 2025 연어당 · Yeonodang. All Rights Reserved.
   </footer>
-
 </body>
 </html>
