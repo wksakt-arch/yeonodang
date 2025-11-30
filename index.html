@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>연어당 - 김포 장기동 연어·육회 전문점</title>
 
+  <!-- 기존 고급 폰트 그대로 유지 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Yuji+Boku&display=swap" rel="stylesheet">
-  />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -17,7 +17,7 @@
       box-sizing: border-box;
     }
 
-    /* 전체 톤: 깊은 밤톤 */
+    /* 전체 분위기 : 어둡고 고급스러운 감성 */
     body {
       font-family: "Noto Serif KR", serif;
       background: #0f0f12;
@@ -78,17 +78,18 @@
       margin-left: 18px;
       font-size: 15px;
       opacity: 0.78;
+      transition: 0.2s;
     }
 
     nav a:hover {
       opacity: 1;
     }
 
-    /* 히어로 영역 / 업로드한 이자카야 사진 */
+    /* 히어로 영역 : 네가 업로드한 이자카야 배경 */
     .hero {
       position: relative;
       text-align: center;
-      padding: 140px 20px;
+      padding: 150px 20px;
       overflow: hidden;
       color: #fff;
     }
@@ -97,10 +98,10 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url("izakaya.png");
+      background-image: url("izakaya.png"); /* 네가 업로드한 파일 */
       background-size: cover;
       background-position: center;
-      filter: brightness(0.38); /* 더 어둡고 감성적 */
+      filter: brightness(0.38);
       z-index: -2;
     }
 
@@ -122,7 +123,7 @@
 
     .hero h1 {
       font-family: "Nanum Myeongjo", serif;
-      font-size: 44px;
+      font-size: 46px;
       font-weight: 700;
       letter-spacing: -0.3px;
       margin-bottom: 16px;
@@ -137,7 +138,7 @@
     .hero p {
       font-size: 17px;
       opacity: 0.92;
-      margin-bottom: 22px;
+      margin-bottom: 25px;
       text-shadow: 0 0 10px rgba(0,0,0,0.5);
     }
 
@@ -170,7 +171,7 @@
       background: rgba(255,140,90,0.2);
     }
 
-    /* 섹션 공통 */
+    /* 공통 섹션 */
     section {
       max-width: 1100px;
       margin: 0 auto;
@@ -259,13 +260,6 @@
       opacity: 0.55;
       font-family: "Nanum Myeongjo", serif;
     }
-
-     /* ===== 붓글씨 폰트 적용 ===== */
-.hero h1,
-.hero h1 span,
-.logo {
-  font-family: "Yuji Boku", serif !important;
-}
   </style>
 </head>
 
@@ -334,7 +328,7 @@
   <!-- 세트 -->
   <section id="set">
     <h2>점심 / 세트 메뉴</h2>
-    <p class="subtitle">연어당에서 가장 인기가 많은 런치 구성.</p>
+    <p class="subtitle">연어당에서 인기 많은 런치 구성.</p>
 
     <ul style="opacity:0.8; font-size:15px; line-height:1.9;">
       <li>어묵우동 + 초밥(5p) 오마카세 세트</li>
@@ -347,7 +341,7 @@
   <!-- 갤러리 -->
   <section id="gallery">
     <h2>갤러리</h2>
-    <p class="subtitle">매장 분위기와 음식 사진을 채워갈 공간입니다.</p>
+    <p class="subtitle">매장 분위기와 음식 사진을 채울 예정입니다.</p>
 
     <div class="gallery">
       <div class="gallery-box">사진자리</div>
@@ -370,14 +364,18 @@
     <p class="subtitle">편한 방식으로 연락 주세요.</p>
 
     <ul style="opacity:0.8; font-size:15px; line-height:1.9;">
-      <li>전화: 010-6379-7669</li>
-      <li>네이버 톡톡 문의 가능</li>
-      <li>포장 및 일부 메뉴 배달 가능</li>
+      <li>전화: 010-0000-0000</li>
+      <li>네이버 톡톡 가능</li>
+      <li>일부 메뉴 포장/배달 가능</li>
     </ul>
   </section>
 
   <footer>
     © 2025 연어당 · Yeonodang. All Rights Reserved.
   </footer>
+
+</body>
+</html>
+
 </body>
 </html>
