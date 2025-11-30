@@ -251,24 +251,40 @@
       opacity: 0.65;
     }
 
-    /* 갤러리 */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-      margin-top: 24px;
-    }
+   /* 갤러리 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
 
-    .gallery-box {
-      background: #26262c;
-      height: 130px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #999;
-      font-size: 13px;
-    }
+.gallery-box {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #26262c;
+  height: 150px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+}
+
+.gallery-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-box span {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  padding: 4px 10px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.6);
+  color: #fce3cf;
+}
 
     /* 지도 */
     iframe {
@@ -432,16 +448,31 @@
 
   <!-- 갤러리 -->
   <section id="gallery">
-    <h2>갤러리</h2>
-    <p class="subtitle">매장 분위기와 음식 사진을 채울 예정입니다.</p>
+  <h2>갤러리</h2>
+  <p class="subtitle">매장 분위기와 음식 사진을 채울 예정입니다.</p>
 
-    <div class="gallery">
-      <div class="gallery-box">("문어숙회.jpg")</div>
-      <div class="gallery-box">("육사시미.jpg")</div>
-      <div class="gallery-box">("우동+초밥.jpg")</div>
-      <div class="gallery-box">("튀김+초밥.jpg")</div>
+  <div class="gallery">
+    <div class="gallery-box">
+      <img src="문어숙회.jpg" alt="문어숙회">
+      <span>문어숙회</span>
     </div>
-  </section>
+
+    <div class="gallery-box">
+      <img src="육사시미.jpg" alt="육사시미">
+      <span>육사시미</span>
+    </div>
+
+    <div class="gallery-box">
+      <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
+      <span>우동 + 초밥</span>
+    </div>
+
+    <div class="gallery-box">
+      <img src="튀김+초밥.jpg" alt="튀김 + 초밥 세트">
+      <span>튀김 + 초밥</span>
+    </div>
+  </div>
+</section>
 
   <!-- 오시는 길 -->
   <section id="location">
