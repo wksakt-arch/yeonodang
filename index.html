@@ -451,29 +451,35 @@
         font-size: 34px;
       }
 
-      /* 모바일 메뉴: 햄버거 */
+            /* 모바일 메뉴: 햄버거 */
       .nav-toggle {
         display: block;
       }
 
+      /* 오른쪽에서 쫙 열리는 풀사이드 메뉴 */
       .nav-links {
         position: fixed;
-        top: 56px;
+        top: 0;
         right: 0;
+        width: 72%;
+        max-width: 270px;
+        height: 100vh;
         flex-direction: column;
         align-items: flex-start;
-        background: rgba(10, 8, 10, 0.98);
-        padding: 14px 20px 18px;
-        border-bottom-left-radius: 16px;
+        background: rgba(10, 8, 10, 0.97);
+        padding: 80px 24px 24px;  /* 위쪽 여백 넉넉하게 */
+        border-bottom-left-radius: 24px;
         border-left: 1px solid rgba(255,188,150,0.25);
-        border-bottom: 1px solid rgba(255,188,150,0.25);
+        box-shadow: -6px 0 18px rgba(0,0,0,0.8);
         transform: translateX(100%);
         transition: transform 0.25s ease-out;
       }
 
       .nav-links a {
-        margin: 6px 0;
-        font-size: 14px;
+        margin: 8px 0;
+        font-size: 15px;
+        color: #ffcfaa;
+        opacity: 0.9;
       }
 
       .nav-links.open {
