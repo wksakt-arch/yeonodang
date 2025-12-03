@@ -132,6 +132,12 @@
       padding: 150px 20px 140px;
       overflow: hidden;
       color: #fff;
+
+      /* 추가: 화면 처음 들어올 때 항상 꽉 차게 보이도록 */
+      min-height: calc(100vh - 70px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero::before {
@@ -303,55 +309,55 @@
       opacity: 0.65;
     }
 
-   /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
-.gallery-scroll {
-  position: relative;
-  overflow: hidden;
-  margin-top: 24px;
-}
+    /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
+    .gallery-scroll {
+      position: relative;
+      overflow: hidden;
+      margin-top: 24px;
+    }
 
-.gallery-track {
-  display: flex;
-  gap: 10px;
-  width: max-content;
-  animation: galleryScroll 40s linear infinite; /* 속도는 40s 숫자만 바꾸면 됨 */
-}
+    .gallery-track {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+      animation: galleryScroll 40s linear infinite; /* 속도는 40s 숫자만 바꾸면 됨 */
+    }
 
-.gallery-box {
-  position: relative;
-  flex: 0 0 260px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #26262c;
-  height: 150px;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.5);
-  cursor: pointer;
-}
+    .gallery-box {
+      position: relative;
+      flex: 0 0 260px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #26262c;
+      height: 150px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+      cursor: pointer;
+    }
 
-.gallery-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+    .gallery-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
-.gallery-box span {
-  position: absolute;
-  left: 10px;
-  bottom: 8px;
-  padding: 4px 10px;
-  font-size: 12px;
-  border-radius: 999px;
-  background: rgba(0,0,0,0.6);
-  color: #fce3cf;
-}
+    .gallery-box span {
+      position: absolute;
+      left: 10px;
+      bottom: 8px;
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.6);
+      color: #fce3cf;
+    }
 
-/* 0% → 50%까지만 이동 (두 세트 중 한 세트 길이만큼) */
-@keyframes galleryScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-    
+    /* 0% → 50%까지만 이동 (두 세트 중 한 세트 길이만큼) */
+    @keyframes galleryScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
     /* 지도 래퍼 (PC용) */
     .map-wrap {
       position: relative;
@@ -524,6 +530,9 @@
 
 <body>
 
+  <!-- 여기 div가 핵심: 외부에서 #menu로 들어와도 화면 맨 위에 위치 -->
+  <div id="menu"></div>
+
   <!-- 네비 -->
   <header>
     <div class="nav">
@@ -539,7 +548,8 @@
       </button>
 
       <nav class="nav-links">
-        <a href="#menu">메뉴</a>
+        <!-- 내부 메뉴 링크는 #menu-section 으로 변경 -->
+        <a href="#menu-section">메뉴</a>
         <a href="#set">점심/세트</a>
         <a href="#delivery">배달·포장</a>
         <a href="#gallery">갤러리</a>
@@ -559,13 +569,13 @@
       </h1>
       <p>이자카야 감성 속에서 즐기는 연어당의 한 상.</p>
 
-      <a class="btn-primary" href="#menu">메뉴 보기</a>
+      <a class="btn-primary" href="#menu-section">메뉴 보기</a>
       <a class="btn-outline" href="#contact">예약 · 문의</a>
     </div>
   </section>
 
   <!-- 메뉴 -->
-  <section id="menu">
+  <section id="menu-section">
     <h2>대표 메뉴</h2>
     <p class="subtitle">연어당에서 가장 사랑받는 시그니처 메뉴입니다.</p>
 
@@ -634,77 +644,77 @@
     </div>
   </section>
 
-<!-- 갤러리 (자동 스크롤) -->
-<section id="gallery">
-  <h2>갤러리</h2>
-  <p class="subtitle">매장 분위기와 음식 사진을 채워가는 공간입니다.</p>
+  <!-- 갤러리 (자동 스크롤) -->
+  <section id="gallery">
+    <h2>갤러리</h2>
+    <p class="subtitle">매장 분위기와 음식 사진을 채워가는 공간입니다.</p>
 
-  <div class="gallery-scroll">
-    <div class="gallery-track">
-      <!-- 1세트 -->
-      <div class="gallery-box">
-        <img src="육사시미.jpg" alt="육사시미">
-        <span>육사시미</span>
-      </div>
+    <div class="gallery-scroll">
+      <div class="gallery-track">
+        <!-- 1세트 -->
+        <div class="gallery-box">
+          <img src="육사시미.jpg" alt="육사시미">
+          <span>육사시미</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="문어숙회.jpg" alt="문어숙회">
-        <span>문어숙회</span>
-      </div>
+        <div class="gallery-box">
+          <img src="문어숙회.jpg" alt="문어숙회">
+          <span>문어숙회</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
-        <span>우동 + 초밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
+          <span>우동 + 초밥</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="육회덮밥.jpg" alt="육회덮밥">
-        <span>육회덮밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="육회덮밥.jpg" alt="육회덮밥">
+          <span>육회덮밥</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="연어덮밥.jpg" alt="연어덮밥">
-        <span>연어덮밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="연어덮밥.jpg" alt="연어덮밥">
+          <span>연어덮밥</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="새우초밥.jpg" alt="새우초밥">
-        <span>새우초밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="새우초밥.jpg" alt="새우초밥">
+          <span>새우초밥</span>
+        </div>
 
-      <!-- 2세트 (위랑 똑같이 한 번 더) -->
-      <div class="gallery-box">
-        <img src="육사시미.jpg" alt="육사시미">
-        <span>육사시미</span>
-      </div>
+        <!-- 2세트 -->
+        <div class="gallery-box">
+          <img src="육사시미.jpg" alt="육사시미">
+          <span>육사시미</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="문어숙회.jpg" alt="문어숙회">
-        <span>문어숙회</span>
-      </div>
+        <div class="gallery-box">
+          <img src="문어숙회.jpg" alt="문어숙회">
+          <span>문어숙회</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
-        <span>우동 + 초밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
+          <span>우동 + 초밥</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="육회덮밥.jpg" alt="육회덮밥">
-        <span>육회덮밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="육회덮밥.jpg" alt="육회덮밥">
+          <span>육회덮밥</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="연어덮밥.jpg" alt="연어덮밥">
-        <span>연어덮밥</span>
-      </div>
+        <div class="gallery-box">
+          <img src="연어덮밥.jpg" alt="연어덮밥">
+          <span>연어덮밥</span>
+        </div>
 
-      <div class="gallery-box">
-        <img src="새우초밥.jpg" alt="새우초밥">
-        <span>새우초밥</span>
+        <div class="gallery-box">
+          <img src="새우초밥.jpg" alt="새우초밥">
+          <span>새우초밥</span>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- 오시는 길 -->
   <section id="location">
