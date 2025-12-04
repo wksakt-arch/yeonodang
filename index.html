@@ -330,6 +330,7 @@
       padding: 18px 18px 16px;
       border: 1px solid rgba(255,210,170,0.18);
       box-shadow: 0 8px 18px rgba(0,0,0,0.55);
+      position: relative;
     }
 
     .drink-category-title {
@@ -367,6 +368,31 @@
       white-space: nowrap;
       font-weight: 600;
       font-size: 13px;
+    }
+
+    /* 일품진로 스페셜 카드 강조 */
+    .drink-category.jinro-event {
+      border-color: rgba(255,230,170,0.55);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.7);
+    }
+
+    .event-badge {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,224,170,0.7);
+      background: rgba(0,0,0,0.35);
+      color: #ffe7b8;
+      letter-spacing: 0.08em;
+    }
+
+    .event-note {
+      margin-top: 6px;
+      font-size: 11px;
+      opacity: 0.65;
     }
 
     /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
@@ -571,7 +597,7 @@
       }
 
       .map-wrap {
-        display: false;
+        display: none;
       }
       .map-fallback {
         display: block;
@@ -704,6 +730,24 @@
           </ul>
         </div>
 
+        <!-- 일품진로 스페셜 -->
+        <div class="drink-category jinro-event">
+          <span class="event-badge">EVENT</span>
+          <div class="drink-category-title">일품진로 스페셜</div>
+          <div class="drink-category-sub">연어당만의 단독 상시 행사 가격</div>
+          <ul class="drink-list">
+            <li>
+              <span class="drink-name">일품진로 병 (375ml)</span>
+              <span class="drink-price">₩18,000</span>
+            </li>
+            <li>
+              <span class="drink-name">일품진로 잔 (1shot)</span>
+              <span class="drink-price">₩6,000</span>
+            </li>
+          </ul>
+          <p class="event-note">* 연어 사시미 · 육회와 함께 즐기기 좋은 연어당 시그니처 행사 메뉴입니다.</p>
+        </div>
+
         <!-- 소주 / 기타 주류 -->
         <div class="drink-category">
           <div class="drink-category-title">소주 · 기타</div>
@@ -712,7 +756,6 @@
             <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
             <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
             <li><span class="drink-name">청하</span><span class="drink-price">₩6,000</span></li>
-            
           </ul>
         </div>
       </div>
