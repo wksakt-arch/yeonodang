@@ -75,7 +75,6 @@
       border: 2px solid #0f0f12;
     }
 
-    /* 네비 링크 (데스크탑) */
     .nav-links {
       display: flex;
       align-items: center;
@@ -93,7 +92,6 @@
       opacity: 1;
     }
 
-    /* 모바일 햄버거 버튼 */
     .nav-toggle {
       display: none;
       width: 34px;
@@ -318,10 +316,23 @@
       margin-bottom: 18px;
     }
 
-    .drink-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    /* 가로로 흘러가는 영역 */
+    .drink-scroll {
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .drink-track {
+      display: flex;
       gap: 20px;
+      width: max-content;
+      animation: drinkScroll 40s linear infinite;
+    }
+
+    @keyframes drinkScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .drink-category {
@@ -331,6 +342,7 @@
       border: 1px solid rgba(255,210,170,0.18);
       box-shadow: 0 8px 18px rgba(0,0,0,0.55);
       position: relative;
+      flex: 0 0 280px;   /* 카드 폭 고정 → 줄 안 내려가게 */
     }
 
     .drink-category-title {
@@ -357,10 +369,13 @@
       align-items: baseline;
       margin-bottom: 4px;
       gap: 10px;
+      white-space: nowrap;  /* 이름/가격 줄바꿈 방지 */
     }
 
     .drink-name {
       opacity: 0.9;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .drink-price {
@@ -370,7 +385,6 @@
       font-size: 13px;
     }
 
-    /* 일품진로 스페셜 카드 강조 */
     .drink-category.jinro-event {
       border-color: rgba(255,230,170,0.55);
       box-shadow: 0 10px 22px rgba(0,0,0,0.7);
@@ -395,7 +409,7 @@
       opacity: 0.65;
     }
 
-    /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
+    /* 갤러리 */
     .gallery-scroll {
       position: relative;
       overflow: hidden;
@@ -443,7 +457,6 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* 지도 래퍼 (PC용) */
     .map-wrap {
       position: relative;
       width: 100%;
@@ -695,78 +708,121 @@
       <p class="subtitle">연어당의 음식과 가장 잘 어울리는 한 잔을 골라보세요.</p>
       <p class="drink-note">※ 실제 판매 가격과 구성은 매장 상황에 따라 달라질 수 있습니다.</p>
 
-      <div class="drink-grid">
-         <!-- 일품진로 스페셜 -->
-        <div class="drink-category jinro-event">
-          <span class="event-badge">EVENT</span>
-          <div class="drink-category-title">일품진로 스페셜</div>
-          <div class="drink-category-sub">연어당만의 단독 상시 행사 가격</div>
-          <ul class="drink-list">
-            <li>
-              <span class="drink-name">일품진로 25 (375ml)</span>
-              <span class="drink-price">₩20,000</span>
-            </li>
-            <li>
-              <span class="drink-name">일품진로 오크25 (375ml)</span>
-              <span class="drink-price">₩20,000</span>
-            </li>
-            <li>
-              <span class="drink-name">일품진로 오크43 (375ml)</span>
-              <span class="drink-price">₩49,000</span>
-            </li>
-          </ul>
-          <p class="event-note">* 연어 사시미 · 육회와 함께 즐기기 좋은 연어당 시그니처 행사 메뉴입니다.</p>
-        </div>
+      <div class="drink-scroll">
+        <div class="drink-track">
+          <!-- 1세트 -->
+          <div class="drink-category jinro-event">
+            <span class="event-badge">EVENT</span>
+            <div class="drink-category-title">일품진로 스페셜</div>
+            <div class="drink-category-sub">연어당만의 단독 상시 행사 가격</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">일품진로 25 (375ml)</span><span class="drink-price">₩20,000</span></li>
+              <li><span class="drink-name">일품진로 오크25 (375ml)</span><span class="drink-price">₩20,000</span></li>
+              <li><span class="drink-name">일품진로 오크43 (375ml)</span><span class="drink-price">₩49,000</span></li>
+            </ul>
+            <p class="event-note">* 연어 사시미 · 육회와 함께 즐기기 좋은 연어당 시그니처 행사 메뉴입니다.</p>
+          </div>
 
-        <!-- 생맥주 / 하이볼 -->
-        <div class="drink-category">
-          <div class="drink-category-title">생맥주 · 하이볼</div>
-          <div class="drink-category-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
-          <ul class="drink-list">
-            <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
-            <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
-            <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
-            <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
-          </ul>
-        </div>
+          <div class="drink-category">
+            <div class="drink-category-title">생맥주 · 하이볼</div>
+            <div class="drink-category-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
+              <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
+              <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
+              <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
+            </ul>
+          </div>
 
-        <!-- 사케 / 니혼슈 -->
-        <div class="drink-category">
-          <div class="drink-category-title">사케 · 니혼슈</div>
-          <div class="drink-category-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
-          <ul class="drink-list">
-            <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
-            <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
-            <li><span class="drink-name">간바레 오또상 (900ml)</span><span class="drink-price">₩38,000</span></li>
-          </ul>
-        </div>
+          <div class="drink-category">
+            <div class="drink-category-title">사케 · 니혼슈</div>
+            <div class="drink-category-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
+              <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
+              <li><span class="drink-name">간바레 오또상 (900ml)</span><span class="drink-price">₩38,000</span></li>
+            </ul>
+          </div>
 
-        <!-- 프리미엄 사케 -->
-        <div class="drink-category">
-          <div class="drink-category-title">프리미엄 사케</div>
-          <div class="drink-category-sub">특별한 날을 위한 셀렉션 사케</div>
-          <ul class="drink-list">
-            <li><span class="drink-name">닷사이준마이 다이긴죠23</span><span class="drink-price">₩290,000</span></li>
-            <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
-            <li><span class="drink-name">쿠보타준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
-            <li><span class="drink-name">월계관준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
-          </ul>
-        </div>
+          <div class="drink-category">
+            <div class="drink-category-title">프리미엄 사케</div>
+            <div class="drink-category-sub">특별한 날을 위한 셀렉션 사케</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">닷사이준마이 다이긴죠 23</span><span class="drink-price">₩290,000</span></li>
+              <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
+              <li><span class="drink-name">쿠보타준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
+              <li><span class="drink-name">월계관준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
+            </ul>
+          </div>
 
-        <!-- 소주 / 기타 주류 -->
-        <div class="drink-category">
-          <div class="drink-category-title">소주 · 기타</div>
-          <div class="drink-category-sub">가성비 좋은 한 잔</div>
-          <ul class="drink-list">
-            <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
-            <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
-            <li><span class="drink-name">청하</span><span class="drink-price">₩6,000</span></li>
-          </ul>
+          <div class="drink-category">
+            <div class="drink-category-title">소주 · 기타</div>
+            <div class="drink-category-sub">가성비 좋은 한 잔</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
+              <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
+              <li><span class="drink-name">청하</span><span class="drink-price">₩6,000</span></li>
+            </ul>
+          </div>
+
+          <!-- 2세트 (복사본) -->
+          <div class="drink-category jinro-event">
+            <span class="event-badge">EVENT</span>
+            <div class="drink-category-title">일품진로 스페셜</div>
+            <div class="drink-category-sub">연어당만의 단독 상시 행사 가격</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">일품진로 25 (375ml)</span><span class="drink-price">₩20,000</span></li>
+              <li><span class="drink-name">일품진로 오크25 (375ml)</span><span class="drink-price">₩20,000</span></li>
+              <li><span class="drink-name">일품진로 오크43 (375ml)</span><span class="drink-price">₩49,000</span></li>
+            </ul>
+            <p class="event-note">* 연어 사시미 · 육회와 함께 즐기기 좋은 연어당 시그니처 행사 메뉴입니다.</p>
+          </div>
+
+          <div class="drink-category">
+            <div class="drink-category-title">생맥주 · 하이볼</div>
+            <div class="drink-category-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
+              <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
+              <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
+              <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
+            </ul>
+          </div>
+
+          <div class="drink-category">
+            <div class="drink-category-title">사케 · 니혼슈</div>
+            <div class="drink-category-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
+              <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
+              <li><span class="drink-name">간바레 오또상 (900ml)</span><span class="drink-price">₩38,000</span></li>
+            </ul>
+          </div>
+
+          <div class="drink-category">
+            <div class="drink-category-title">프리미엄 사케</div>
+            <div class="drink-category-sub">특별한 날을 위한 셀렉션 사케</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">닷사이준마이 다이긴죠 23</span><span class="drink-price">₩290,000</span></li>
+              <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
+              <li><span class="drink-name">쿠보타준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
+              <li><span class="drink-name">월계관준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
+            </ul>
+          </div>
+
+          <div class="drink-category">
+            <div class="drink-category-title">소주 · 기타</div>
+            <div class="drink-category-sub">가성비 좋은 한 잔</div>
+            <ul class="drink-list">
+              <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
+              <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
+              <li><span class="drink-name">청하</span><span class="drink-price">₩6,000</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-    <!-- ===== /주류 섹션 끝 ===== -->
-
+    <!-- /주류 섹션 -->
   </section>
 
   <!-- 세트 -->
@@ -799,7 +855,7 @@
     </div>
   </section>
 
-  <!-- 갤러리 (자동 스크롤) -->
+  <!-- 갤러리 -->
   <section id="gallery">
     <h2>갤러리</h2>
     <p class="subtitle">매장 분위기와 음식 사진을 채워가는 공간입니다.</p>
@@ -810,57 +866,47 @@
           <img src="육사시미.jpg" alt="육사시미">
           <span>육사시미</span>
         </div>
-
         <div class="gallery-box">
           <img src="문어숙회.jpg" alt="문어숙회">
           <span>문어숙회</span>
         </div>
-
         <div class="gallery-box">
           <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
           <span>우동 + 초밥</span>
         </div>
-
         <div class="gallery-box">
           <img src="육회덮밥.jpg" alt="육회덮밥">
           <span>육회덮밥</span>
         </div>
-
         <div class="gallery-box">
           <img src="연어덮밥.jpg" alt="연어덮밥">
           <span>연어덮밥</span>
         </div>
-
         <div class="gallery-box">
           <img src="새우초밥.jpg" alt="새우초밥">
           <span>새우초밥</span>
         </div>
-
+        <!-- 2세트 -->
         <div class="gallery-box">
           <img src="육사시미.jpg" alt="육사시미">
           <span>육사시미</span>
         </div>
-
         <div class="gallery-box">
           <img src="문어숙회.jpg" alt="문어숙회">
           <span>문어숙회</span>
         </div>
-
         <div class="gallery-box">
           <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
           <span>우동 + 초밥</span>
         </div>
-
         <div class="gallery-box">
           <img src="육회덮밥.jpg" alt="육회덮밥">
           <span>육회덮밥</span>
         </div>
-
         <div class="gallery-box">
           <img src="연어덮밥.jpg" alt="연어덮밥">
           <span>연어덮밥</span>
         </div>
-
         <div class="gallery-box">
           <img src="새우초밥.jpg" alt="새우초밥">
           <span>새우초밥</span>
