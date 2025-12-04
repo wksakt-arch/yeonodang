@@ -330,7 +330,12 @@
       animation: drinkScroll 40s linear infinite;
       animation-play-state: running;
     }
-
+    
+    /* 마우스 올리면 멈춤 */
+.drink-scroll:hover .drink-track {
+  animation-play-state: paused;
+    }
+    
     @keyframes drinkScroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -423,6 +428,10 @@
       width: max-content;
       animation: galleryScroll 40s linear infinite;
       animation-play-state: running;
+    }
+    
+    .gallery-scroll:hover .gallery-track {
+  animation-play-state: paused;
     }
 
     .gallery-box {
