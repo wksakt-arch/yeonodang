@@ -132,8 +132,6 @@
       padding: 150px 20px 140px;
       overflow: hidden;
       color: #fff;
-
-      /* 추가: 화면 처음 들어올 때 항상 꽉 차게 보이도록 */
       min-height: calc(100vh - 70px);
       display: flex;
       align-items: center;
@@ -309,6 +307,68 @@
       opacity: 0.65;
     }
 
+    /* ===== 주류 섹션 스타일 ===== */
+    .drink-section {
+      margin-top: 20px;
+    }
+
+    .drink-note {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 18px;
+    }
+
+    .drink-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .drink-category {
+      background: radial-gradient(circle at 0 0, #332018 0, #1f1412 50%, #181012 100%);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid rgba(255,210,170,0.18);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.55);
+    }
+
+    .drink-category-title {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 17px;
+      color: #ffbe8f;
+      margin-bottom: 6px;
+    }
+
+    .drink-category-sub {
+      font-size: 12px;
+      opacity: 0.65;
+      margin-bottom: 10px;
+    }
+
+    .drink-list {
+      list-style: none;
+      font-size: 13px;
+    }
+
+    .drink-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      gap: 10px;
+    }
+
+    .drink-name {
+      opacity: 0.9;
+    }
+
+    .drink-price {
+      color: #ff9c64;
+      white-space: nowrap;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
     /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
     .gallery-scroll {
       position: relative;
@@ -320,7 +380,7 @@
       display: flex;
       gap: 10px;
       width: max-content;
-      animation: galleryScroll 40s linear infinite; /* 속도는 40s 숫자만 바꾸면 됨 */
+      animation: galleryScroll 40s linear infinite;
     }
 
     .gallery-box {
@@ -352,7 +412,6 @@
       color: #fce3cf;
     }
 
-    /* 0% → 50%까지만 이동 (두 세트 중 한 세트 길이만큼) */
     @keyframes galleryScroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
@@ -378,7 +437,6 @@
       border: 0;
     }
 
-    /* 지도 모바일 대체 링크 */
     .map-fallback {
       display: none;
       margin-top: 14px;
@@ -403,7 +461,6 @@
       background: rgba(255,184,138,0.18);
     }
 
-    /* 버튼 모음 */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -435,7 +492,6 @@
       font-family: "Nanum Myeongjo", serif;
     }
 
-    /* 이미지 확대 모달 */
     .modal {
       display: none;
       position: fixed;
@@ -468,7 +524,6 @@
       opacity: 1;
     }
 
-    /* 반응형 */
     @media (max-width: 720px) {
       header {
         padding: 8px 12px;
@@ -482,12 +537,10 @@
         font-size: 34px;
       }
 
-      /* 모바일 메뉴: 햄버거 */
       .nav-toggle {
         display: block;
       }
 
-      /* 오른쪽에서 쫙 열리는 풀사이드 메뉴 */
       .nav-links {
         position: fixed;
         top: 0;
@@ -517,9 +570,8 @@
         transform: translateX(0);
       }
 
-      /* 모바일에서는 iframe 숨기고 버튼만 */
       .map-wrap {
-        display: none;
+        display: false;
       }
       .map-fallback {
         display: block;
@@ -530,7 +582,6 @@
 
 <body>
 
-  <!-- 여기 div가 핵심: 외부에서 #menu로 들어와도 화면 맨 위에 위치 -->
   <div id="menu"></div>
 
   <!-- 네비 -->
@@ -548,7 +599,6 @@
       </button>
 
       <nav class="nav-links">
-        <!-- 내부 메뉴 링크는 #menu-section 으로 변경 -->
         <a href="#menu-section">메뉴</a>
         <a href="#set">점심/세트</a>
         <a href="#delivery">배달·포장</a>
@@ -574,7 +624,7 @@
     </div>
   </section>
 
-  <!-- 메뉴 -->
+  <!-- 대표 메뉴 -->
   <section id="menu-section">
     <h2>대표 메뉴</h2>
     <p class="subtitle">연어당에서 가장 사랑받는 시그니처 메뉴입니다.</p>
@@ -612,6 +662,62 @@
         <div class="menu-tag">치맛살을 사용한 부드러운 식감이 일 품</div>
       </div>
     </div>
+
+    <!-- ===== 주류 섹션 (대표메뉴 바로 아래) ===== -->
+    <div class="drink-section">
+      <h2>주류 메뉴</h2>
+      <p class="subtitle">연어당의 음식과 가장 잘 어울리는 한 잔을 골라보세요.</p>
+      <p class="drink-note">※ 실제 판매 가격과 구성은 매장 상황에 따라 달라질 수 있습니다.</p>
+
+      <div class="drink-grid">
+        <!-- 생맥주 / 하이볼 -->
+        <div class="drink-category">
+          <div class="drink-category-title">생맥주 · 하이볼</div>
+          <div class="drink-category-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
+          <ul class="drink-list">
+            <li><span class="drink-name">삿포로 생맥주 425ml</span><span class="drink-price">₩7,000</span></li>
+            <li><span class="drink-name">삿포로 생맥주 800ml</span><span class="drink-price">₩12,000</span></li>
+            <li><span class="drink-name">하이볼 (레몬)</span><span class="drink-price">₩7,000</span></li>
+            <li><span class="drink-name">하이볼 (진저)</span><span class="drink-price">₩7,000</span></li>
+          </ul>
+        </div>
+
+        <!-- 병맥주 / 기타 맥주 -->
+        <div class="drink-category">
+          <div class="drink-category-title">병맥주</div>
+          <div class="drink-category-sub">가볍게 곁들이기 좋은 맥주</div>
+          <ul class="drink-list">
+            <li><span class="drink-name">삿포로 병맥주</span><span class="drink-price">₩7,000</span></li>
+            <li><span class="drink-name">아사히 병맥주</span><span class="drink-price">₩7,000</span></li>
+            <li><span class="drink-name">기린 이치방</span><span class="drink-price">₩7,000</span></li>
+          </ul>
+        </div>
+
+        <!-- 사케 / 니혼슈 -->
+        <div class="drink-category">
+          <div class="drink-category-title">사케 · 니혼슈</div>
+          <div class="drink-category-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
+          <ul class="drink-list">
+            <li><span class="drink-name">하쿠츠루 준마이 (300ml)</span><span class="drink-price">₩18,000</span></li>
+            <li><span class="drink-name">다이긴조 (300ml)</span><span class="drink-price">₩25,000</span></li>
+            <li><span class="drink-name">히야 or 아츠칸 선택</span><span class="drink-price"></span></li>
+          </ul>
+        </div>
+
+        <!-- 소주 / 기타 주류 -->
+        <div class="drink-category">
+          <div class="drink-category-title">소주 · 기타</div>
+          <div class="drink-category-sub">가성비 좋은 한 잔</div>
+          <ul class="drink-list">
+            <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩5,000</span></li>
+            <li><span class="drink-name">청하</span><span class="drink-price">₩7,000</span></li>
+            <li><span class="drink-name">매화수</span><span class="drink-price">₩7,000</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- ===== /주류 섹션 끝 ===== -->
+
   </section>
 
   <!-- 세트 -->
@@ -651,7 +757,6 @@
 
     <div class="gallery-scroll">
       <div class="gallery-track">
-        <!-- 1세트 -->
         <div class="gallery-box">
           <img src="육사시미.jpg" alt="육사시미">
           <span>육사시미</span>
@@ -682,7 +787,6 @@
           <span>새우초밥</span>
         </div>
 
-        <!-- 2세트 -->
         <div class="gallery-box">
           <img src="육사시미.jpg" alt="육사시미">
           <span>육사시미</span>
@@ -767,7 +871,6 @@
 
   <!-- JS -->
   <script>
-    // 갤러리 이미지 클릭 -> 모달
     const modal = document.getElementById("modal");
     const modalImg = document.getElementById("modal-img");
     const modalClose = document.querySelector(".modal-close");
@@ -787,7 +890,6 @@
       if (e.target === modal) modal.style.display = "none";
     };
 
-    // 모바일 햄버거 메뉴
     const navToggle = document.querySelector(".nav-toggle");
     const navLinks = document.querySelector(".nav-links");
 
@@ -796,7 +898,6 @@
       navLinks.classList.toggle("open");
     });
 
-    // 메뉴 클릭 시 자동 닫기
     document.querySelectorAll(".nav-links a").forEach(link => {
       link.addEventListener("click", () => {
         navToggle.classList.remove("open");
