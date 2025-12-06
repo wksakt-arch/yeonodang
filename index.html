@@ -17,10 +17,21 @@
       box-sizing: border-box;
     }
 
+    :root {
+      --bg-ivory: #f6f1e8;
+      --bg-card: #ffffff;
+      --accent-salmon: #ff7b5a;
+      --accent-salmon-soft: #ffe2d9;
+      --deep-navy: #111827;
+      --text-main: #1f2933;
+      --text-sub: #6b7280;
+      --border-soft: #e5ded0;
+    }
+
     body {
       font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
-      background-color: #f6f1e8; /* 아이보리 배경 */
-      color: #1f2933;
+      background-color: var(--bg-ivory);
+      color: var(--text-main);
       line-height: 1.6;
     }
 
@@ -34,19 +45,6 @@
       display: block;
     }
 
-    /* 색상 변수 느낌 */
-    :root {
-      --bg-ivory: #f6f1e8;
-      --bg-card: #ffffff;
-      --accent-salmon: #ff7b5a;
-      --accent-salmon-soft: #ffe2d9;
-      --deep-navy: #111827;
-      --text-main: #1f2933;
-      --text-sub: #6b7280;
-      --border-soft: #e5ded0;
-    }
-
-    /* 공통 레이아웃 */
     .container {
       width: 100%;
       max-width: 1100px;
@@ -58,17 +56,17 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      background: rgba(17, 24, 39, 0.96); /* 네이비 */
+      background: rgba(17, 24, 39, 0.97);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: #f9fafb;
     }
 
     .header-inner {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
-      color: #f9fafb;
+      padding: 12px 0;
     }
 
     .logo {
@@ -137,20 +135,11 @@
     }
 
     main {
-      padding: 30px 0 70px;
+      padding-bottom: 80px;
     }
 
-    /* 섹션 공통 */
     .section {
-      padding: 18px 0 28px;
-    }
-
-    .section-inner-card {
-      background: var(--bg-card);
-      border-radius: 18px;
-      border: 1px solid var(--border-soft);
-      padding: 24px 20px;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      padding: 26px 0;
     }
 
     .section-title-wrap {
@@ -177,175 +166,437 @@
       margin-top: 4px;
     }
 
-    /* 히어로 */
-    .hero {
-      padding-top: 10px;
+    .section-card {
+      background: var(--bg-card);
+      border-radius: 18px;
+      border: 1px solid var(--border-soft);
+      padding: 22px 20px;
+      box-shadow: 0 14px 32px rgba(15, 23, 42, 0.08);
     }
 
-    .hero-inner {
-      background: linear-gradient(135deg, #fffaf3, #ffe7dd);
-      border-radius: 22px;
-      border: 1px solid #f1ddcf;
-      padding: 26px 22px;
+    /* ============ HERO ============ */
+
+    .hero {
+      padding-top: 0;
+    }
+
+    .hero-wrapper {
+      position: relative;
+      background: #000;
+      color: #f9fafb;
+      min-height: 82vh;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(17, 24, 39, 0.85), rgba(17, 24, 39, 0.3)),
+        url('hero-salmon-main.jpg'); /* TODO: 연어당 대표 사진 파일명으로 교체 */
+      background-size: cover;
+      background-position: center;
+      filter: saturate(1.2);
+    }
+
+    .hero-overlay {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 16px 40px;
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
       gap: 26px;
-      box-shadow: 0 18px 40px rgba(148, 94, 60, 0.18);
+      align-items: center;
     }
 
-    .hero-title {
-      font-family: 'Nanum Myeongjo', serif;
-      font-size: 30px;
-      letter-spacing: 0.25em;
+    .hero-left {
+      max-width: 520px;
+    }
+
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(249, 250, 251, 0.2);
       margin-bottom: 10px;
-      color: var(--deep-navy);
     }
 
-    .hero-subtitle {
-      font-size: 14px;
-      color: var(--text-main);
+    .hero-label-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f9734b;
+    }
+
+    .hero-title-main {
+      font-family: 'Nanum Myeongjo', serif;
+      font-size: 32px;
+      letter-spacing: 0.24em;
+      margin-bottom: 10px;
+    }
+
+    .hero-title-sub {
+      font-size: 18px;
       margin-bottom: 14px;
+      color: #fde7da;
     }
 
     .hero-desc {
       font-size: 13px;
-      color: var(--text-sub);
+      color: #e5e7eb;
       margin-bottom: 16px;
+    }
+
+    .hero-usps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+
+    .hero-usp {
+      border-radius: 10px;
+      padding: 8px 9px;
+      background: rgba(15, 23, 42, 0.88);
+      border: 1px solid rgba(248, 113, 113, 0.4);
+    }
+
+    .hero-usp-label {
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: #f9734b;
+      margin-bottom: 2px;
+    }
+
+    .hero-usp-main {
+      font-size: 12px;
+      color: #f9fafb;
+    }
+
+    .hero-meta {
+      font-size: 12px;
+      color: #e5e7eb;
+      margin-bottom: 16px;
+    }
+
+    .hero-meta p + p {
+      margin-top: 2px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      font-size: 13px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #ff7b5a, #ffb59d);
+      color: #111827;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 12px 25px rgba(248, 113, 113, 0.45);
+    }
+
+    .btn-primary span {
+      margin-left: 4px;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 14px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(249, 250, 251, 0.35);
+      background: rgba(15, 23, 42, 0.7);
+      color: #f9fafb;
+      cursor: pointer;
     }
 
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 14px;
-    }
-
-    .tag {
-      border-radius: 999px;
-      padding: 3px 10px;
       font-size: 11px;
-      background: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 122, 90, 0.35);
-      color: #7a3b22;
+      color: #e5e7eb;
     }
 
-    /* USP 3줄 – 색감 있는 카드 */
-    .hero-usps {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      margin-bottom: 14px;
-      font-size: 12px;
+    .hero-tag {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(249, 250, 251, 0.2);
     }
 
-    .hero-usp {
-      border-radius: 12px;
-      padding: 9px 10px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(255, 160, 130, 0.4);
-    }
-
-    .hero-usp-label {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: #f9734b;
-      margin-bottom: 3px;
-    }
-
-    .hero-usp-main {
-      font-size: 12px;
-      color: #4b3426;
-    }
-
-    .hero-info {
-      font-size: 12px;
-      color: #5b4b3c;
-    }
-
-    .hero-info p + p {
-      margin-top: 3px;
-    }
-
-    .hero-photo-wrap {
+    .hero-right {
       position: relative;
     }
 
-    .hero-photo-tag {
+    .hero-plate-card {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #111827;
+      border: 1px solid rgba(249, 250, 251, 0.25);
+      box-shadow: 0 22px 40px rgba(15, 23, 42, 0.8);
+    }
+
+    .hero-plate-image {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-plate-image::before {
+      content: "";
+      display: block;
+      padding-top: 68%;
+    }
+
+    .hero-plate-image-inner {
+      position: absolute;
+      inset: 0;
+      background-image: url('hero-plate.jpg'); /* TODO: 연어+육회+우동+초밥 한 상 사진으로 교체 */
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);
+      transition: transform 0.5s ease;
+      filter: saturate(1.1);
+    }
+
+    .hero-plate-card:hover .hero-plate-image-inner {
+      transform: scale(1.07);
+    }
+
+    .hero-plate-info {
+      padding: 10px 13px 12px;
+      background: linear-gradient(to right, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.8));
+      font-size: 12px;
+      color: #f9fafb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-plate-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hero-plate-sub {
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .hero-plate-badge {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(248, 113, 113, 0.15);
+      border: 1px solid rgba(248, 113, 113, 0.7);
+      font-size: 11px;
+      color: #fecaca;
+      white-space: nowrap;
+    }
+
+    .hero-floating-badge {
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(17, 24, 39, 0.78);
-      color: #f9fafb;
-      font-size: 11px;
       padding: 4px 9px;
       border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(249, 250, 251, 0.3);
+      font-size: 11px;
+      color: #f9fafb;
     }
 
-    .hero-photo {
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      background: radial-gradient(circle at top, #ffb59d, #7c2d12);
-      min-height: 210px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fef3ec;
-      font-size: 13px;
-      text-align: center;
-      box-shadow: 0 15px 30px rgba(148, 63, 25, 0.35);
-    }
+    /* ============ BEST 메뉴 ============ */
 
-    /* 시그니처 섹션 */
-    .signature-grid {
+    .best-menu-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 22px;
-      align-items: flex-start;
-    }
-
-    .signature-text {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
       font-size: 13px;
-      color: var(--text-main);
     }
 
-    .signature-text p + p {
-      margin-top: 8px;
-    }
-
-    .signature-list {
-      margin-top: 10px;
-      font-size: 12px;
-      color: var(--text-main);
-      border-radius: 12px;
+    .best-card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
       border: 1px solid var(--border-soft);
-      background: #fffaf4;
-      padding: 10px 12px;
+      display: flex;
+      flex-direction: column;
     }
 
-    .signature-list li {
-      list-style: none;
-      padding: 5px 0;
+    .best-img-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .best-img-wrap::before {
+      content: "";
+      display: block;
+      padding-top: 70%;
+    }
+
+    .best-img-inner {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .best-card:hover .best-img-inner {
+      transform: scale(1.06);
+    }
+
+    .best-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(17, 24, 39, 0.8);
+      color: #f9fafb;
+      font-size: 10px;
+    }
+
+    .best-body {
+      padding: 10px 11px 11px;
+    }
+
+    .best-title-row {
       display: flex;
       justify-content: space-between;
       gap: 8px;
-      border-bottom: 1px dashed #e6d7c3;
+      margin-bottom: 3px;
     }
 
-    .signature-list li:last-child {
-      border-bottom: none;
+    .best-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--deep-navy);
     }
 
-    .signature-list span:first-child {
-      font-weight: 500;
-      color: #463425;
+    .best-price {
+      font-size: 12px;
+      color: #7a3b22;
     }
 
-    .signature-list span:last-child {
+    .best-desc {
       font-size: 11px;
-      color: #7a6a57;
+      color: var(--text-sub);
     }
 
-    /* 매장 정보 */
+    /* ============ 후기/신뢰 ============ */
+
+    .trust-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      margin-top: 4px;
+    }
+
+    .trust-badge {
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px dashed #d4b79a;
+      background: #fff7ec;
+      color: #5b3b24;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .trust-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #f9734b;
+    }
+
+    /* ============ 갤러리 ============ */
+
+    .gallery-strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+
+    .gallery-strip::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .gallery-strip::-webkit-scrollbar-thumb {
+      background: #d1b7a0;
+      border-radius: 999px;
+    }
+
+    .gallery-item {
+      min-width: 150px;
+      max-width: 180px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .gallery-item::before {
+      content: "";
+      display: block;
+      padding-top: 120%;
+    }
+
+    .gallery-img-inner {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover .gallery-img-inner {
+      transform: scale(1.05);
+    }
+
+    .gallery-label {
+      position: absolute;
+      left: 8px;
+      bottom: 8px;
+      font-size: 10px;
+      padding: 3px 7px;
+      background: rgba(15, 23, 42, 0.8);
+      color: #f9fafb;
+      border-radius: 999px;
+    }
+
+    /* ============ INFO ============ */
+
     .info-content {
       font-size: 12px;
       color: var(--text-main);
@@ -355,20 +606,77 @@
       margin-top: 4px;
     }
 
-    /* 푸터 */
+    /* ============ FOOTER ============ */
+
     footer {
-      padding: 20px 0 28px;
+      padding: 18px 0 60px;
       font-size: 11px;
       color: #847666;
       border-top: 1px solid #e0d4c5;
-      margin-top: 10px;
+      margin-top: 6px;
     }
 
     footer p + p {
       margin-top: 3px;
     }
 
-    /* 반응형 */
+    /* ============ 하단 고정 바 ============ */
+
+    .bottom-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      background: rgba(17, 24, 39, 0.97);
+      color: #f9fafb;
+      border-top: 1px solid rgba(243, 244, 246, 0.2);
+      padding: 6px 10px;
+    }
+
+    .bottom-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .bottom-bar-info {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .bottom-bar-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .bottom-btn {
+      border-radius: 999px;
+      border: none;
+      padding: 6px 10px;
+      font-size: 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .bottom-btn-primary {
+      background: linear-gradient(135deg, #ff7b5a, #ffb59d);
+      color: #111827;
+      font-weight: 600;
+    }
+
+    .bottom-btn-ghost {
+      background: transparent;
+      color: #f9fafb;
+      border: 1px solid rgba(243, 244, 246, 0.5);
+    }
+
     @media (max-width: 768px) {
       header {
         position: static;
@@ -377,7 +685,7 @@
       .header-inner {
         flex-direction: column;
         align-items: flex-start;
-        gap: 8px;
+        gap: 6px;
       }
 
       nav {
@@ -385,125 +693,238 @@
         font-size: 12px;
       }
 
-      .hero-inner {
+      .hero-overlay {
         grid-template-columns: minmax(0, 1fr);
+        padding-top: 60px;
+        padding-bottom: 28px;
       }
 
-      .hero-title {
+      .hero-wrapper {
+        min-height: auto;
+      }
+
+      .hero-title-main {
         font-size: 24px;
         letter-spacing: 0.18em;
+      }
+
+      .hero-title-sub {
+        font-size: 15px;
       }
 
       .hero-usps {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .signature-grid {
+      .best-menu-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        padding-bottom: 70px;
+      }
+
+      .bottom-bar-info {
+        display: none;
+      }
+
+      .bottom-bar-inner {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container header-inner">
-      <div class="logo">
-        <div class="logo-mark">연</div>
-        <div class="logo-text">
-          <div class="logo-title">연 어 당</div>
-          <div class="logo-sub">연어 · 육회 · 육사시미 전문</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#hero">HOME</a>
-        <a href="#signature">시그니처</a>
-        <a href="#info">오시는 길</a>
-      </nav>
-    </div>
-  </header>
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <div class="hero-wrapper">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay">
+        <div class="hero-left">
+          <div class="hero-label">
+            <span class="hero-label-dot"></span>
+            <span>김포 장기동 · 연어·육회·육사시미 전문</span>
+          </div>
+          <h1 class="hero-title-main">연 어 당</h1>
+          <p class="hero-title-sub">연어 한 상과 한우 육사시미를 한 번에 즐기는 집</p>
+          <p class="hero-desc">
+            두툼하게 썰어낸 연어와 한우 육회, 육사시미에 우동과 초밥까지.
+            과한 인테리어 대신, 접시 위에 올라가는 구성과 맛으로 승부합니다.
+          </p>
 
-  <main>
-    <!-- 히어로 -->
-    <section id="hero" class="section hero">
-      <div class="container">
-        <div class="hero-inner">
-          <div>
-            <h1 class="hero-title">연 어 당</h1>
-            <p class="hero-subtitle">김포 장기동, 연어와 육회를 가장 맛있게 내는 집</p>
-            <p class="hero-desc">
-              주문 즉시 썰어 내는 연어와 한우 육사시미, 정갈한 우동과 초밥 세트를 함께 즐길 수 있는
-              연어·육회 전문점입니다. 과한 인테리어보다 한 상의 완성도에 집중합니다.
-            </p>
-
-            <div class="hero-usps">
-              <div class="hero-usp">
-                <div class="hero-usp-label">USP 01</div>
-                <div class="hero-usp-main">
-                  주문 즉시 썰어내는<br />
-                  컨디션 좋은 연어만 사용
-                </div>
-              </div>
-              <div class="hero-usp">
-                <div class="hero-usp-label">USP 02</div>
-                <div class="hero-usp-main">
-                  투플 등급 한우 위주의<br />
-                  육회 · 육사시미 구성
-                </div>
-              </div>
-              <div class="hero-usp">
-                <div class="hero-usp-label">USP 03</div>
-                <div class="hero-usp-main">
-                  점심 우동+초밥 세트로<br />
-                  가성비 좋은 한 끼 제공
-                </div>
+          <div class="hero-usps">
+            <div class="hero-usp">
+              <div class="hero-usp-label">USP 01</div>
+              <div class="hero-usp-main">
+                주문 즉시 썰어내는<br />컨디션 좋은 연어만 사용
               </div>
             </div>
-
-            <div class="hero-tags">
-              <span class="tag">연어장 · 연어육회 · 한우육사시미</span>
-              <span class="tag">우동 + 초밥 오마카세 세트</span>
-              <span class="tag">점심특선 · 저녁 한 잔</span>
+            <div class="hero-usp">
+              <div class="hero-usp-label">USP 02</div>
+              <div class="hero-usp-main">
+                투플 등급 한우 위주의<br />육회 · 육사시미 구성
+              </div>
             </div>
-
-            <div class="hero-info">
-              <p>📍 경기 김포시 장기동 (연어당 본점)</p>
-              <p>⏰ 영업시간 : 11:30 ~ 22:00 (브레이크 타임은 매장 공지)</p>
-              <p>🍺 생맥주 : 삿포로</p>
+            <div class="hero-usp">
+              <div class="hero-usp-label">USP 03</div>
+              <div class="hero-usp-main">
+                우동+초밥 세트로<br />점심·저녁 모두 가성비 있게
+              </div>
             </div>
           </div>
 
-          <div class="hero-photo-wrap">
-            <div class="hero-photo-tag">SIGNATURE PLATE</div>
-            <div class="hero-photo">
-              연어 한 상, 육회, 우동+초밥이 함께 나온<br />
-              연어당 대표 메뉴 사진을 넣어주세요.<br /><br />
-              (사진 파일 준비되면 이 영역에 실제 이미지로 교체)
+          <div class="hero-meta">
+            <p>📍 경기 김포시 장기동 (연어당 본점)</p>
+            <p>⏰ 영업시간 : 11:30 ~ 22:00 · 브레이크타임 매장 공지</p>
+            <p>🍺 생맥주 : 삿포로</p>
+          </div>
+
+          <div class="hero-actions">
+            <a href="#info">
+              <button class="btn-primary">
+                오늘 자리 있나요?
+                <span>→</span>
+              </button>
+            </a>
+            <a href="#best">
+              <button class="btn-ghost">
+                인기 메뉴 먼저 보기
+              </button>
+            </a>
+          </div>
+
+          <div class="hero-tags">
+            <span class="hero-tag">연어장 · 연어육회</span>
+            <span class="hero-tag">한우 육사시미</span>
+            <span class="hero-tag">우동 + 초밥 세트</span>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="hero-plate-card">
+            <div class="hero-floating-badge">오늘 이 한 상 드시러 오세요</div>
+            <div class="hero-plate-image">
+              <div class="hero-plate-image-inner"></div>
             </div>
+            <div class="hero-plate-info">
+              <div>
+                <div class="hero-plate-title">연어 + 육회 + 우동 + 초밥 한 상</div>
+                <div class="hero-plate-sub">둘이서 술 한 잔, 넷이서 배부르게 나눠 먹기 좋은 기본 구성</div>
+              </div>
+              <div class="hero-plate-badge">
+                BEST SET
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- BEST 메뉴 -->
+    <section id="best" class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-kicker">BEST MENU</div>
+          <h2 class="section-title">처음 오셨다면, 이 세 가지부터</h2>
+          <p class="section-sub">연어당에서 가장 많이 나가는 대표 메뉴들입니다.</p>
+        </div>
+
+        <div class="best-menu-grid">
+          <div class="best-card">
+            <div class="best-img-wrap">
+              <div class="best-img-inner" style="background-image:url('best-salmon-bowl.jpg');"></div>
+              <!-- TODO: 연어덮밥 사진 -->
+              <div class="best-tag">BEST 1</div>
+            </div>
+            <div class="best-body">
+              <div class="best-title-row">
+                <div class="best-name">연어덮밥</div>
+                <div class="best-price">11,000</div>
+              </div>
+              <div class="best-desc">
+                두툼한 연어를 가득 올린 기본이지만 가장 많이 찾는 연어 한 그릇.
+              </div>
+            </div>
+          </div>
+
+          <div class="best-card">
+            <div class="best-img-wrap">
+              <div class="best-img-inner" style="background-image:url('best-udon-sushi.jpg');"></div>
+              <!-- TODO: 어묵/새우튀김 우동 + 초밥 세트 사진 -->
+              <div class="best-tag">BEST 2</div>
+            </div>
+            <div class="best-body">
+              <div class="best-title-row">
+                <div class="best-name">우동 + 초밥 세트</div>
+                <div class="best-price">12,900~</div>
+              </div>
+              <div class="best-desc">
+                따끈한 우동에 연어·새우·장어·문어가 올라가는 오마카세 초밥 5P 구성.
+              </div>
+            </div>
+          </div>
+
+          <div class="best-card">
+            <div class="best-img-wrap">
+              <div class="best-img-inner" style="background-image:url('best-yukhwe.jpg');"></div>
+              <!-- TODO: 한우 육회/육사시미 사진 -->
+              <div class="best-tag">BEST 3</div>
+            </div>
+            <div class="best-body">
+              <div class="best-title-row">
+                <div class="best-name">한우 육회 & 육사시미</div>
+                <div class="best-price">시가</div>
+              </div>
+              <div class="best-desc">
+                투플 등급 위주의 한우로 준비하는 육회, 육사시미. 술 한 잔 부르는 메뉴입니다.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="trust-strip" style="margin-top:14px;">
+          <div class="trust-badge">
+            <span class="trust-dot"></span>
+            <span>네이버 리뷰 평점 ★4.9 (예시 문구)</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-dot"></span>
+            <span>“연어·육회 둘 다 맛있는 집”이라는 단골 후기 다수</span>
+          </div>
+          <div class="trust-badge">
+            <span class="trust-dot"></span>
+            <span>재방문 의사 95% (체감 기준)</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 시그니처 -->
+    <!-- 시그니처/스토리 -->
     <section id="signature" class="section">
       <div class="container">
-        <div class="section-inner-card">
+        <div class="section-card">
           <div class="section-title-wrap">
-            <div class="section-kicker">SIGNATURE</div>
-            <h2 class="section-title">연어와 육회의 밸런스</h2>
-            <p class="section-sub">연어만이 아니라, 육회와 한우 육사시미까지 함께 즐길 수 있는 구성</p>
+            <div class="section-kicker">STORY</div>
+            <h2 class="section-title">연어당을 만드는 방식</h2>
+            <p class="section-sub">왜 연어당을 “연어집”이 아니라 “연어·육회 집”이라고 부르는지.</p>
           </div>
 
-          <div class="signature-grid">
-            <div class="signature-text">
+          <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr);gap:20px;align-items:flex-start;">
+            <div style="font-size:13px;color:var(--text-main);">
               <p>
                 연어당은 연어만 파는 집이 아닙니다.<br />
-                좋은 컨디션의 연어, 한우 육회, 육사시미를 한 번에 즐길 수 있도록
-                구성한 하이브리드 일식·선술집 콘셉트입니다.
+                좋은 컨디션의 연어, 한우 육회, 육사시미를 한 번에 즐길 수 있도록 구성한
+                하이브리드 일식·선술집 콘셉트입니다.
               </p>
-              <p>
-                혼술 한 잔부터 둘, 넷이 먹는 테이블까지,<br />
-                과하지 않지만 확실하게 기억에 남는 한 상을 준비합니다.
+              <p style="margin-top:8px;">
+                혼술 한 잔, 둘이서 식사, 넷이서 술자리를 모두 커버할 수 있는 메뉴 구성으로
+                과한 플레이팅보다 “한 상의 밸런스”를 더 중요하게 생각합니다.
+              </p>
+              <p style="margin-top:8px;">
+                연어를 좋아하는 사람과 육회를 좋아하는 사람이 함께 와도,
+                서로 양보하지 않고 한 상을 즐길 수 있게. 그게 연어당이 추구하는 테이블입니다.
               </p>
             </div>
 
@@ -514,17 +935,56 @@
               </li>
               <li>
                 <span>연어 육회</span>
-                <span>참기름 베이스 고소한 시그니처 양념</span>
+                <span>참기름·다진파·깨를 더한 시그니처 양념</span>
               </li>
               <li>
                 <span>한우 육사시미</span>
-                <span>도톰하게 썰어내는 투플 등급 위주</span>
+                <span>투플 등급 위주, 도톰하게 썰어내는 스타일</span>
               </li>
               <li>
                 <span>우동 + 초밥 세트</span>
-                <span>점심/저녁 모두 인기 있는 기본 구성</span>
+                <span>점심/저녁 모두 인기 있는 기본기 메뉴</span>
               </li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 갤러리 -->
+    <section id="gallery" class="section">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="section-kicker">GALLERY</div>
+          <h2 class="section-title">인스타 감성으로 보는 연어당</h2>
+          <p class="section-sub">실제 손님 상차림, 바 좌석, 한 상 사진들을 이렇게 보여줄 수 있습니다.</p>
+        </div>
+
+        <div class="gallery-strip">
+          <div class="gallery-item">
+            <div class="gallery-img-inner" style="background-image:url('gallery-plate-1.jpg');"></div>
+            <!-- TODO: 연어 한 상 사진 -->
+            <div class="gallery-label">연어 한 상</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-inner" style="background-image:url('gallery-bar.jpg');"></div>
+            <!-- TODO: 바/홀 전경 -->
+            <div class="gallery-label">바 좌석</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-inner" style="background-image:url('gallery-yukhwe.jpg');"></div>
+            <!-- TODO: 육회 클로즈업 -->
+            <div class="gallery-label">한우 육회</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-inner" style="background-image:url('gallery-udon-sushi.jpg');"></div>
+            <!-- TODO: 우동 + 초밥 세트 -->
+            <div class="gallery-label">우동+초밥 세트</div>
+          </div>
+          <div class="gallery-item">
+            <div class="gallery-img-inner" style="background-image:url('gallery-night.jpg');"></div>
+            <!-- TODO: 야간 간판/외관 -->
+            <div class="gallery-label">밤의 연어당</div>
           </div>
         </div>
       </div>
@@ -533,17 +993,18 @@
     <!-- 매장 안내 -->
     <section id="info" class="section">
       <div class="container">
-        <div class="section-inner-card">
+        <div class="section-card">
           <div class="section-title-wrap">
             <div class="section-kicker">INFO</div>
-            <h2 class="section-title">매장 안내</h2>
+            <h2 class="section-title">오시는 길 & 이용 안내</h2>
           </div>
           <div class="info-content">
             <p>📍 경기 김포시 장기동 연어당 본점</p>
             <p>🚗 인근 공영주차장 / 주변 주차 안내는 매장 내 공지 참고</p>
-            <p>📞 전화번호 / 네이버 예약 링크는 네이버 스마트플레이스 기준</p>
-            <p style="margin-top:6px; font-size:11px; color:#9b8770;">
-              ※ 지도/링크는 추후 네이버 지도 임베드 및 예약 버튼으로 교체 예정
+            <p>📞 전화 : 010-0000-0000 (번호 변경 필요 시 수정)</p>
+            <p>🔗 네이버 지도 / 예약 링크는 스마트플레이스 기준으로 연결</p>
+            <p style="margin-top:6px;font-size:11px;color:#9b8770;">
+              ※ 실제로는 이 영역에 네이버 지도 임베드 코드를 넣어도 좋습니다.
             </p>
           </div>
         </div>
@@ -551,10 +1012,28 @@
     </section>
   </main>
 
+  <!-- 하단 고정 바 -->
+  <div class="bottom-bar">
+    <div class="bottom-bar-inner">
+      <div class="bottom-bar-info">
+        <div>지금 연어 한 상 땡기신가요?</div>
+        <div>전화 한 통이면 자리 확인 도와드립니다.</div>
+      </div>
+      <div class="bottom-bar-actions">
+        <a href="tel:010-0000-0000">
+          <button class="bottom-btn bottom-btn-primary">전화 문의</button>
+        </a>
+        <a href="#info">
+          <button class="bottom-btn bottom-btn-ghost">길찾기 / 예약 안내</button>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="container">
       <p>연어당 · SALMON & YUKHWE</p>
-      <p>본 페이지의 내용은 이해를 돕기 위한 예시이며, 실제 메뉴 및 가격은 매장 내 안내문을 기준으로 합니다.</p>
+      <p>본 페이지의 메뉴 및 가격은 이해를 돕기 위한 예시이며, 실제 내용은 매장 내 안내문을 기준으로 합니다.</p>
     </div>
   </footer>
 </body>
