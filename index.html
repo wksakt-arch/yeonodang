@@ -3,19 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>연어당 - 연어·육회·육사시미 전문점 김포 장기동</title>
-
-  <!-- 기본 SEO -->
-  <meta name="description" content="김포 장기동 연어당 본점 · 연어 사시미, 연어덮밥, 한우 육사시미, 우동+초밥 세트, 삿포로 생맥주를 즐길 수 있는 연어·육회 전문 이자카야.">
-  <meta name="keywords" content="연어당, 김포 연어, 김포 장기동 맛집, 연어덮밥, 한우 육사시미, 연어 육회, 이자카야, 삿포로 생맥주">
-
-  <!-- 카톡 / 네이버 프리뷰용 OG -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="연어당 - 연어·육회·육사시미 전문점 김포 장기동">
-  <meta property="og:description" content="두툼한 연어와 한우 육회, 삿포로 생맥주를 한 상으로 즐기는 김포 장기동 연어당 본점.">
-  <!-- 대표 이미지 주소로 교체 -->
-  <meta property="og:image" content="https://wksakt-arch.github.io/yeonodang/대표이미지.jpg">
-  <meta property="og:url" content="https://wksakt-arch.github.io/yeonodang/">
+  <title>연어당 - 연어·육회 전문점 김포 장기동</title>
 
   <!-- 폰트 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,11 +15,6 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    /* 섹션 이동 부드럽게 */
-    html {
-      scroll-behavior: smooth;
     }
 
     /* 전체 분위기 */
@@ -92,6 +75,7 @@
       border: 2px solid #0f0f12;
     }
 
+    /* 네비 링크 (데스크탑) */
     .nav-links {
       display: flex;
       align-items: center;
@@ -158,10 +142,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: url("izakaya.png");
+      /* 외부 간판 사진 사용 */
+      background-image: url("대표이미지.jpg");
       background-size: cover;
-      background-position: center;
-      filter: brightness(0.45);
+      background-position: center bottom;
+      filter: brightness(0.4) saturate(1.05);
       z-index: -2;
     }
 
@@ -264,7 +249,7 @@
       margin-bottom: 26px;
     }
 
-    /* 대표 메뉴 카드 */
+    /* 메뉴 카드 */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -323,7 +308,7 @@
       opacity: 0.65;
     }
 
-    /* ===== 주류 섹션 : 가로 흘러가는 카드 ===== */
+    /* ===== 주류 섹션 : 가로 스크롤 + 무한반복 ===== */
 
     .drink-section {
       margin-top: 40px;
@@ -332,13 +317,13 @@
     .drink-note {
       font-size: 13px;
       opacity: 0.7;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .drink-scroll {
       position: relative;
       overflow: hidden;
-      padding: 8px 0 4px;
+      margin-top: 16px;
     }
 
     .drink-track {
@@ -346,54 +331,51 @@
       gap: 18px;
       width: max-content;
       animation: drinkScroll 40s linear infinite;
-      animation-play-state: running;
     }
 
     .drink-card {
-      flex: 0 0 280px;
+      min-width: 260px;
+      max-width: 260px;
       background: radial-gradient(circle at 0 0, #332018 0, #1f1412 50%, #181012 100%);
       border-radius: 18px;
       padding: 18px 18px 16px;
       border: 1px solid rgba(255,210,170,0.18);
       box-shadow: 0 8px 18px rgba(0,0,0,0.55);
-      position: relative;
     }
 
-    .drink-header {
+    .drink-card-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 6px;
-      gap: 10px;
     }
 
-    .drink-title {
+    .drink-card-title {
       font-family: "Nanum Myeongjo", serif;
-      font-size: 17px;
+      font-size: 16px;
       color: #ffbe8f;
       white-space: nowrap;
     }
 
-    .drink-badge {
-      font-size: 10px;
-      padding: 3px 9px;
+    .drink-card-badge {
+      font-size: 11px;
+      padding: 2px 8px;
       border-radius: 999px;
       border: 1px solid rgba(255,210,170,0.6);
       color: #ffcfaa;
-      background: rgba(0,0,0,0.25);
+      background: rgba(0,0,0,0.3);
       white-space: nowrap;
     }
 
-    .drink-sub {
+    .drink-card-sub {
       font-size: 12px;
       opacity: 0.65;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .drink-list {
       list-style: none;
       font-size: 13px;
-      margin-bottom: 6px;
     }
 
     .drink-list li {
@@ -402,11 +384,11 @@
       align-items: baseline;
       margin-bottom: 4px;
       gap: 10px;
-      white-space: nowrap;
     }
 
     .drink-name {
       opacity: 0.9;
+      white-space: nowrap;
     }
 
     .drink-price {
@@ -416,20 +398,14 @@
       font-size: 13px;
     }
 
-    .drink-footnote {
-      font-size: 11px;
-      opacity: 0.6;
-      margin-top: 4px;
-    }
-
-    /* 마우스 올라가면 애니메이션 정지 */
-    .drink-scroll:hover .drink-track {
-      animation-play-state: paused;
-    }
-
     @keyframes drinkScroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+
+    /* 마우스 올리면 주류 라인 멈춤 */
+    .drink-scroll:hover .drink-track {
+      animation-play-state: paused;
     }
 
     /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
@@ -444,7 +420,6 @@
       gap: 10px;
       width: max-content;
       animation: galleryScroll 40s linear infinite;
-      animation-play-state: running;
     }
 
     .gallery-box {
@@ -476,14 +451,14 @@
       color: #fce3cf;
     }
 
-    /* 갤러리 hover 시 정지 */
-    .gallery-scroll:hover .gallery-track {
-      animation-play-state: paused;
-    }
-
     @keyframes galleryScroll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+
+    /* 마우스 올리면 갤러리 멈춤 */
+    .gallery-scroll:hover .gallery-track {
+      animation-play-state: paused;
     }
 
     /* 지도 래퍼 (PC용) */
@@ -506,6 +481,7 @@
       border: 0;
     }
 
+    /* 지도 모바일 대체 링크 */
     .map-fallback {
       display: none;
       margin-top: 14px;
@@ -530,6 +506,7 @@
       background: rgba(255,184,138,0.18);
     }
 
+    /* 버튼 모음 */
     .btn-row {
       display: flex;
       flex-wrap: wrap;
@@ -557,9 +534,8 @@
       text-align: center;
       padding: 30px;
       font-size: 12px;
-      opacity: 0.7;
+      opacity: 0.55;
       font-family: "Nanum Myeongjo", serif;
-      line-height: 1.8;
     }
 
     /* 이미지 확대 모달 */
@@ -609,10 +585,12 @@
         font-size: 34px;
       }
 
+      /* 모바일 메뉴: 햄버거 */
       .nav-toggle {
         display: block;
       }
 
+      /* 오른쪽에서 쫙 열리는 풀사이드 메뉴 */
       .nav-links {
         position: fixed;
         top: 0;
@@ -642,17 +620,12 @@
         transform: translateX(0);
       }
 
-      /* 모바일에서는 지도 숨기고 버튼만 */
+      /* 모바일에서는 iframe 숨기고 버튼만 */
       .map-wrap {
         display: none;
       }
       .map-fallback {
         display: block;
-      }
-
-      /* 주류 카드 폭 조금 줄이기 */
-      .drink-card {
-        flex: 0 0 240px;
       }
     }
   </style>
@@ -660,7 +633,7 @@
 
 <body>
 
-  <!-- 외부에서 #menu로 들어올 때 페이지 맨 위로 위치용 앵커 -->
+  <!-- 페이지 상단에서 #menu로 들어와도 히어로가 보이도록 하는 앵커 -->
   <div id="menu"></div>
 
   <!-- 네비 -->
@@ -693,10 +666,10 @@
     <div class="hero-inner">
       <h1>
         연어당 본점<br>
-        <span class="hero-sub">연어 · 육회 · 육사시미 전문점</span>
+        <span class="hero-sub">연어 · 육회 전문점</span>
         <span class="hero-brand">김포 장기동</span>
       </h1>
-      <p>이자카야 감성 속에서 즐기는 연어와 한우 한 상.</p>
+      <p>이자카야 감성 속에서 즐기는 연어당의 한 상.</p>
 
       <a class="btn-primary" href="#menu-section">메뉴 보기</a>
       <a class="btn-outline" href="#contact">예약 · 문의</a>
@@ -730,7 +703,7 @@
         <div class="menu-name">문어숙회</div>
         <div class="menu-price">小 ₩38,900 / 大 ₩49,900</div>
         <div class="menu-desc">신선한 문어의 식감을 살린 담백한 숙회 요리.</div>
-        <div class="menu-tag">술안주 인기 메뉴</div>
+        <div class="menu-tag">신선함을 넘어 살아 숨 쉬는듯한 술안주 · 인기 메뉴</div>
       </div>
 
       <div class="menu-card">
@@ -738,51 +711,50 @@
         <div class="menu-name">한우 육사시미</div>
         <div class="menu-price">小 ₩40,900 / 大 ₩53,900</div>
         <div class="menu-desc">정직한 재료로 준비하는 한우 육사시미.</div>
-        <div class="menu-tag">투플 치맛살 위주 · 부드러운 식감</div>
+        <div class="menu-tag">치맛살을 사용한 부드러운 식감이 일 품</div>
       </div>
     </div>
 
-    <!-- ===== 주류 섹션 (대표메뉴 바로 아래, 가로 스크롤) ===== -->
+    <!-- ===== 주류 섹션 (대표메뉴 바로 아래) ===== -->
     <div class="drink-section">
       <h2>주류 메뉴</h2>
-      <p class="subtitle">연어와 한우 한 상과 잘 어울리는 술들을 준비했습니다.</p>
+      <p class="subtitle">연어당의 음식과 가장 잘 어울리는 한 잔을 골라보세요.</p>
       <p class="drink-note">※ 실제 판매 가격과 구성은 매장 상황에 따라 달라질 수 있습니다.</p>
 
       <div class="drink-scroll">
         <div class="drink-track">
           <!-- 1세트 -->
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">일품진로 스페셜</div>
-              <div class="drink-badge">EVENT</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">일품진로 스페셜</div>
+              <div class="drink-card-badge">EVENT</div>
             </div>
-            <div class="drink-sub">연어당만의 단독 상시 행사 가격</div>
+            <div class="drink-card-sub">연어당만의 단독 상시 행사 가격</div>
             <ul class="drink-list">
               <li><span class="drink-name">일품진로 25 (375ml)</span><span class="drink-price">₩20,000</span></li>
               <li><span class="drink-name">일품진로 오크25 (375ml)</span><span class="drink-price">₩20,000</span></li>
               <li><span class="drink-name">일품진로 오크43 (375ml)</span><span class="drink-price">₩49,000</span></li>
             </ul>
-            <p class="drink-footnote">* 연어 사시미 · 육회와 함께 즐기기 좋은 연어당 시그니처 행사 메뉴입니다.</p>
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">생맥주 · 하이볼</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">생맥주 · 하이볼</div>
             </div>
-            <div class="drink-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
+            <div class="drink-card-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
             <ul class="drink-list">
               <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
               <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
               <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
-              <li><span class="drink-name">도쿄리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
+              <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
             </ul>
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">사케 · 니혼슈</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">사케 · 니혼슈</div>
             </div>
-            <div class="drink-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
+            <div class="drink-card-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
             <ul class="drink-list">
               <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
               <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
@@ -791,12 +763,12 @@
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">프리미엄 사케</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">프리미엄 사케</div>
             </div>
-            <div class="drink-sub">특별한 날을 위한 셀렉션 사케</div>
+            <div class="drink-card-sub">특별한 날을 위한 셀렉션 사케</div>
             <ul class="drink-list">
-              <li><span class="drink-name">닷사이 준마이 다이긴죠 23</span><span class="drink-price">₩290,000</span></li>
+              <li><span class="drink-name">닷사이 준마이 다이긴죠23</span><span class="drink-price">₩290,000</span></li>
               <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
               <li><span class="drink-name">쿠보타 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
               <li><span class="drink-name">월계관 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
@@ -804,10 +776,10 @@
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">소주 · 기타</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">소주 · 기타</div>
             </div>
-            <div class="drink-sub">가성비 좋은 한 잔</div>
+            <div class="drink-card-sub">가성비 좋은 한 잔</div>
             <ul class="drink-list">
               <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
               <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
@@ -815,39 +787,38 @@
             </ul>
           </div>
 
-          <!-- 2세트 (무한루프용으로 그대로 한 번 더 반복) -->
+          <!-- 2세트 (무한 스크롤용 복제) -->
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">일품진로 스페셜</div>
-              <div class="drink-badge">EVENT</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">일품진로 스페셜</div>
+              <div class="drink-card-badge">EVENT</div>
             </div>
-            <div class="drink-sub">연어당만의 단독 상시 행사 가격</div>
+            <div class="drink-card-sub">연어당만의 단독 상시 행사 가격</div>
             <ul class="drink-list">
               <li><span class="drink-name">일품진로 25 (375ml)</span><span class="drink-price">₩20,000</span></li>
               <li><span class="drink-name">일품진로 오크25 (375ml)</span><span class="drink-price">₩20,000</span></li>
               <li><span class="drink-name">일품진로 오크43 (375ml)</span><span class="drink-price">₩49,000</span></li>
             </ul>
-            <p class="drink-footnote">* 연어 사시미 · 육회와 함께 즐기기 좋은 연어당 시그니처 행사 메뉴입니다.</p>
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">생맥주 · 하이볼</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">생맥주 · 하이볼</div>
             </div>
-            <div class="drink-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
+            <div class="drink-card-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
             <ul class="drink-list">
               <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
               <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
               <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
-              <li><span class="drink-name">도쿄리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
+              <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
             </ul>
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">사케 · 니혼슈</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">사케 · 니혼슈</div>
             </div>
-            <div class="drink-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
+            <div class="drink-card-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
             <ul class="drink-list">
               <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
               <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
@@ -856,12 +827,12 @@
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">프리미엄 사케</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">프리미엄 사케</div>
             </div>
-            <div class="drink-sub">특별한 날을 위한 셀렉션 사케</div>
+            <div class="drink-card-sub">특별한 날을 위한 셀렉션 사케</div>
             <ul class="drink-list">
-              <li><span class="drink-name">닷사이 준마이 다이긴죠 23</span><span class="drink-price">₩290,000</span></li>
+              <li><span class="drink-name">닷사이 준마이 다이긴죠23</span><span class="drink-price">₩290,000</span></li>
               <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
               <li><span class="drink-name">쿠보타 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
               <li><span class="drink-name">월계관 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
@@ -869,10 +840,10 @@
           </div>
 
           <div class="drink-card">
-            <div class="drink-header">
-              <div class="drink-title">소주 · 기타</div>
+            <div class="drink-card-header">
+              <div class="drink-card-title">소주 · 기타</div>
             </div>
-            <div class="drink-sub">가성비 좋은 한 잔</div>
+            <div class="drink-card-sub">가성비 좋은 한 잔</div>
             <ul class="drink-list">
               <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
               <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
@@ -882,13 +853,14 @@
         </div>
       </div>
     </div>
-    <!-- /주류 섹션 끝 -->
+    <!-- ===== /주류 섹션 끝 ===== -->
+
   </section>
 
-  <!-- 점심 / 세트 -->
+  <!-- 세트 -->
   <section id="set">
     <h2>점심 / 세트 메뉴</h2>
-    <p class="subtitle">연어당에서 인기 많은 런치 구성입니다. (11:30~15:00)</p>
+    <p class="subtitle">연어당에서 인기 많은 런치 구성입니다.(11:30~15:00)</p>
 
     <ul style="opacity:0.86; font-size:15px; line-height:1.9;">
       <li>어묵우동 + 초밥(5p) 세트</li>
@@ -922,65 +894,76 @@
 
     <div class="gallery-scroll">
       <div class="gallery-track">
-        <!-- 1세트 -->
+        <!-- 새로 추가된 삿포로 라이트박스 -->
         <div class="gallery-box">
-          <img src="육사시미.jpg" alt="연어당 한우 육사시미">
-          <span>한우 육사시미</span>
+          <img src="gallery-sapporo-lightbox.jpg" alt="삿포로 네온 사인">
+          <span>삿포로 생맥주 바</span>
+        </div>
+
+        <!-- 1세트 기존 이미지들 -->
+        <div class="gallery-box">
+          <img src="육사시미.jpg" alt="육사시미">
+          <span>육사시미</span>
         </div>
 
         <div class="gallery-box">
-          <img src="문어숙회.jpg" alt="연어당 문어숙회">
+          <img src="문어숙회.jpg" alt="문어숙회">
           <span>문어숙회</span>
         </div>
 
         <div class="gallery-box">
-          <img src="우동+초밥.jpg" alt="연어당 우동+초밥 세트">
+          <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
           <span>우동 + 초밥</span>
         </div>
 
         <div class="gallery-box">
-          <img src="육회덮밥.jpg" alt="연어당 육회덮밥">
+          <img src="육회덮밥.jpg" alt="육회덮밥">
           <span>육회덮밥</span>
         </div>
 
         <div class="gallery-box">
-          <img src="연어덮밥.jpg" alt="연어당 연어덮밥">
+          <img src="연어덮밥.jpg" alt="연어덮밥">
           <span>연어덮밥</span>
         </div>
 
         <div class="gallery-box">
-          <img src="새우초밥.jpg" alt="연어당 새우초밥">
+          <img src="새우초밥.jpg" alt="새우초밥">
           <span>새우초밥</span>
         </div>
 
-        <!-- 2세트 -->
+        <!-- 2세트 (무한 스크롤용 복제) -->
         <div class="gallery-box">
-          <img src="육사시미.jpg" alt="연어당 한우 육사시미">
-          <span>한우 육사시미</span>
+          <img src="gallery-sapporo-lightbox.jpg" alt="삿포로 네온 사인">
+          <span>삿포로 생맥주 바</span>
         </div>
 
         <div class="gallery-box">
-          <img src="문어숙회.jpg" alt="연어당 문어숙회">
+          <img src="육사시미.jpg" alt="육사시미">
+          <span>육사시미</span>
+        </div>
+
+        <div class="gallery-box">
+          <img src="문어숙회.jpg" alt="문어숙회">
           <span>문어숙회</span>
         </div>
 
         <div class="gallery-box">
-          <img src="우동+초밥.jpg" alt="연어당 우동+초밥 세트">
+          <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
           <span>우동 + 초밥</span>
         </div>
 
         <div class="gallery-box">
-          <img src="육회덮밥.jpg" alt="연어당 육회덮밥">
+          <img src="육회덮밥.jpg" alt="육회덮밥">
           <span>육회덮밥</span>
         </div>
 
         <div class="gallery-box">
-          <img src="연어덮밥.jpg" alt="연어당 연어덮밥">
+          <img src="연어덮밥.jpg" alt="연어덮밥">
           <span>연어덮밥</span>
         </div>
 
         <div class="gallery-box">
-          <img src="새우초밥.jpg" alt="연어당 새우초밥">
+          <img src="새우초밥.jpg" alt="새우초밥">
           <span>새우초밥</span>
         </div>
       </div>
@@ -1015,7 +998,7 @@
     <p class="subtitle">편한 방식으로 연락 주세요.</p>
 
     <ul style="opacity:0.86; font-size:14px; line-height:1.9; margin-bottom:12px;">
-      <li>전화: 010-6398-7669</li>
+      <li>전화: 010-6398-7669 </li>
       <li>단체 예약, 기념일 상차림, 포장 문의 가능</li>
     </ul>
 
@@ -1027,14 +1010,13 @@
   </section>
 
   <footer>
-    © 2025 연어당 · Yeonodang. All Rights Reserved.<br>
-    상호명 : 연어당 · 주소 : 경기 김포시 장기동 1872-7 1층 · 대표 메뉴 : 연어 사시미 · 연어덮밥 · 한우 육사시미 · 우동+초밥 세트
+    © 2025 연어당 · Yeonodang. All Rights Reserved.
   </footer>
 
   <!-- 이미지 확대 모달 -->
   <div id="modal" class="modal">
     <span class="modal-close">&times;</span>
-    <img id="modal-img" class="modal-img" alt="연어당 음식 확대 이미지">
+    <img id="modal-img" class="modal-img">
   </div>
 
   <!-- JS -->
@@ -1048,7 +1030,6 @@
       img.addEventListener("click", () => {
         modal.style.display = "flex";
         modalImg.src = img.src;
-        modalImg.alt = img.alt;
       });
     });
 
