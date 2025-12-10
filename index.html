@@ -461,66 +461,6 @@
       animation-play-state: paused;
     }
 
-    /* === 방문자 섹션 === */
-    #visitor {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 50px 20px 60px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-
-    #visitor h2 {
-      font-family: "Nanum Myeongjo", serif;
-      font-size: 24px;
-      color: #ffb88a;
-      margin-bottom: 8px;
-    }
-
-    .visitor-sub {
-      font-size: 14px;
-      opacity: 0.75;
-      margin-bottom: 18px;
-    }
-
-    .visitor-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-      background: radial-gradient(circle at 0 0, #3a2117 0, #221415 50%, #191015 100%);
-      border-radius: 18px;
-      padding: 18px 20px;
-      border: 1px solid rgba(255,210,170,0.22);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.65);
-    }
-
-    .visitor-item {
-      display: flex;
-      align-items: baseline;
-      gap: 6px;
-      font-size: 15px;
-    }
-
-    .visitor-label {
-      opacity: 0.8;
-    }
-
-    .visitor-value {
-      font-size: 22px;
-      font-weight: 700;
-      color: #ffcf9a;
-    }
-
-    .visitor-unit {
-      font-size: 13px;
-      opacity: 0.8;
-    }
-
-    .visitor-note {
-      margin-top: 10px;
-      font-size: 11px;
-      opacity: 0.6;
-    }
-
     /* 지도 래퍼 (PC용) */
     .map-wrap {
       position: relative;
@@ -598,6 +538,55 @@
       font-family: "Nanum Myeongjo", serif;
     }
 
+    /* 방문자 섹션 */
+    .visitor-section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 30px;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .visitor-title {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 20px;
+      color: #ffb88a;
+      margin-bottom: 10px;
+    }
+
+    .visitor-items {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .visitor-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 110px;
+    }
+
+    .visitor-label {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    .visitor-number {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffcf9a;
+    }
+
+    .visitor-note {
+      font-size: 11px;
+      opacity: 0.6;
+      margin-top: 6px;
+    }
+
     /* 이미지 확대 모달 */
     .modal {
       display: none;
@@ -645,12 +634,10 @@
         font-size: 34px;
       }
 
-      /* 모바일 메뉴: 햄버거 */
       .nav-toggle {
         display: block;
       }
 
-      /* 오른쪽에서 쫙 열리는 풀사이드 메뉴 */
       .nav-links {
         position: fixed;
         top: 0;
@@ -680,7 +667,6 @@
         transform: translateX(0);
       }
 
-      /* 모바일에서는 iframe 숨기고 버튼만 */
       .map-wrap {
         display: none;
       }
@@ -688,9 +674,9 @@
         display: block;
       }
 
-      .visitor-box {
+      .visitor-items {
         flex-direction: column;
-        align-items: flex-start;
+        gap: 10px;
       }
     }
   </style>
@@ -964,7 +950,7 @@
           <img src="대표이미지.jpg" alt="연어당">
           <span>연어당</span>
         </div>
-        
+
         <div class="gallery-box">
           <img src="사포로.jpg" alt="삿포로">
           <span>삿포로 생맥주 바</span>
@@ -1006,7 +992,7 @@
           <img src="대표이미지.jpg" alt="연어당">
           <span>연어당</span>
         </div>
-        
+
         <div class="gallery-box">
           <img src="사포로.jpg" alt="삿포로">
           <span>삿포로 생맥주 바</span>
@@ -1043,29 +1029,6 @@
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- 방문자 현황 -->
-  <section id="visitor">
-    <h2>오늘의 온라인 방문 현황</h2>
-    <p class="visitor-sub">연어당 사이트를 찾아주신 분들을 집계하고 있습니다.</p>
-
-    <div class="visitor-box">
-      <div class="visitor-item">
-        <span class="visitor-label">오늘 방문자</span>
-        <span class="visitor-value" id="today-visits">-</span>
-        <span class="visitor-unit">명</span>
-      </div>
-      <div class="visitor-item">
-        <span class="visitor-label">누적 방문자</span>
-        <span class="visitor-value" id="total-visits">-</span>
-        <span class="visitor-unit">명</span>
-      </div>
-    </div>
-
-    <p class="visitor-note">
-      * 웹사이트 기준 집계이며 실제 매장 방문 인원과는 다를 수 있습니다.
-    </p>
   </section>
 
   <!-- 오시는 길 -->
@@ -1105,6 +1068,22 @@
       <a class="btn-small" href="http://pf.kakao.com/_qxkpYn/chat" target="_blank">카카오톡 채널 문의</a>
       <a class="btn-small" href="https://m.place.naver.com/place/1998769061/home" target="_blank">네이버 톡톡 문의</a>
     </div>
+  </section>
+
+  <!-- 방문자 현황 (푸터 위) -->
+  <section id="visitor" class="visitor-section">
+    <div class="visitor-title">오늘의 방문 현황</div>
+    <div class="visitor-items">
+      <div class="visitor-item">
+        <span class="visitor-label">오늘 방문</span>
+        <span class="visitor-number" id="today-visitors">0</span>
+      </div>
+      <div class="visitor-item">
+        <span class="visitor-label">누적 방문</span>
+        <span class="visitor-number" id="total-visitors">0</span>
+      </div>
+    </div>
+    <div class="visitor-note">※ 브라우저 기준으로 집계된 예시 수치입니다.</div>
   </section>
 
   <footer>
@@ -1157,32 +1136,42 @@
     });
 
     // === 방문자 카운터 ===
-    (function() {
-      const todaySpan = document.getElementById("today-visits");
-      const totalSpan = document.getElementById("total-visits");
-      if (!todaySpan || !totalSpan) return;
+    (function () {
+      if (!window.localStorage || !window.sessionStorage) {
+        return;
+      }
 
-      const todayKey = new Date().toISOString().slice(0, 10); // 'YYYY-MM-DD'
+      const todayEl = document.getElementById("today-visitors");
+      const totalEl = document.getElementById("total-visitors");
+      if (!todayEl || !totalEl) return;
 
-      // 누적 방문자
-      fetch("https://api.countapi.xyz/hit/yeonodang.site/total")
-        .then(res => res.json())
-        .then(data => {
-          totalSpan.textContent = data.value.toLocaleString("ko-KR");
-        })
-        .catch(() => {
-          totalSpan.textContent = "-";
-        });
+      const today = new Date();
+      const todayStr = today.toISOString().slice(0, 10); // YYYY-MM-DD
 
-      // 오늘 방문자
-      fetch("https://api.countapi.xyz/hit/yeonodang.site/" + todayKey)
-        .then(res => res.json())
-        .then(data => {
-          todaySpan.textContent = data.value.toLocaleString("ko-KR");
-        })
-        .catch(() => {
-          todaySpan.textContent = "-";
-        });
+      let total = Number(localStorage.getItem("yeonodang_total_visits") || "0");
+      let todayCount = Number(localStorage.getItem("yeonodang_today_count") || "0");
+      const lastDate = localStorage.getItem("yeonodang_last_visit_date");
+
+      // 날짜가 바뀌었으면 오늘 카운트 리셋
+      if (lastDate !== todayStr) {
+        todayCount = 0;
+        localStorage.setItem("yeonodang_today_count", "0");
+        localStorage.setItem("yeonodang_last_visit_date", todayStr);
+        sessionStorage.removeItem("yeonodang_visited_today");
+      }
+
+      // 오늘 이 브라우저에서 첫 방문이면 1 증가
+      if (!sessionStorage.getItem("yeonodang_visited_today")) {
+        total += 1;
+        todayCount += 1;
+        localStorage.setItem("yeonodang_total_visits", String(total));
+        localStorage.setItem("yeonodang_today_count", String(todayCount));
+        localStorage.setItem("yeonodang_last_visit_date", todayStr);
+        sessionStorage.setItem("yeonodang_visited_today", "1");
+      }
+
+      todayEl.textContent = todayCount.toLocaleString("ko-KR");
+      totalEl.textContent = total.toLocaleString("ko-KR");
     })();
   </script>
 
