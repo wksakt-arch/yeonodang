@@ -11,7 +11,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@3F00;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     /* 전체 분위기 */
     body {
@@ -21,7 +25,10 @@
       line-height: 1.7;
     }
 
-    a { text-decoration: none; color: inherit; }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     /* 상단 네비 */
     header {
@@ -82,7 +89,9 @@
       white-space: nowrap;
     }
 
-    .nav-links a:hover { opacity: 1; }
+    .nav-links a:hover {
+      opacity: 1;
+    }
 
     /* 모바일 햄버거 버튼 */
     .nav-toggle {
@@ -104,9 +113,17 @@
       transition: 0.25s;
     }
 
-    .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .nav-toggle.open span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.open span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
 
     /* 히어로 */
     .hero {
@@ -125,6 +142,7 @@
       content: "";
       position: absolute;
       inset: 0;
+      /* 외부 간판 사진 사용 */
       background-image: url("izakaya.png");
       background-size: cover;
       background-position: center bottom;
@@ -158,10 +176,21 @@
       text-shadow: 0 0 14px rgba(0,0,0,0.7);
     }
 
-    .hero-sub { display: block; margin-top: 6px; font-size: 30px; }
-    .hero-brand { display: block; margin-top: 10px; font-size: 32px; }
+    .hero-sub {
+      display: block;
+      margin-top: 6px;
+      font-size: 30px;
+    }
 
-    .hero h1 span { color: #ffb48b; }
+    .hero-brand {
+      display: block;
+      margin-top: 10px;
+      font-size: 32px;
+    }
+
+    .hero h1 span {
+      color: #ffb48b;
+    }
 
     .hero p {
       font-size: 17px;
@@ -190,8 +219,14 @@
       font-weight: bold;
     }
 
-    .btn-outline { background: rgba(0,0,0,0.35); color: #ffb48b; }
-    .btn-outline:hover { background: rgba(255,140,90,0.2); }
+    .btn-outline {
+      background: rgba(0,0,0,0.35);
+      color: #ffb48b;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,140,90,0.2);
+    }
 
     /* 공통 섹션 */
     section {
@@ -208,7 +243,11 @@
       margin-bottom: 16px;
     }
 
-    .subtitle { font-size: 15px; opacity: 0.72; margin-bottom: 26px; }
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.72;
+      margin-bottom: 26px;
+    }
 
     /* 메뉴 카드 */
     .menu-grid {
@@ -244,17 +283,55 @@
       margin-bottom: 10px;
     }
 
-    .menu-name { font-size: 17px; font-weight: 600; margin-bottom: 4px; color: #ffe7d5; }
-    .menu-price { color: #ff9c64; font-weight: 700; margin-bottom: 8px; font-size: 15px; }
-    .menu-desc { font-size: 14px; opacity: 0.8; }
-    .menu-tag { margin-top: 6px; font-size: 12px; opacity: 0.65; }
+    .menu-name {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #ffe7d5;
+    }
+
+    .menu-price {
+      color: #ff9c64;
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 15px;
+    }
+
+    .menu-desc {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .menu-tag {
+      margin-top: 6px;
+      font-size: 12px;
+      opacity: 0.65;
+    }
 
     /* ===== 주류 섹션 : 가로 스크롤 + 무한반복 ===== */
-    .drink-section { margin-top: 40px; }
-    .drink-note { font-size: 13px; opacity: 0.7; margin-bottom: 10px; }
 
-    .drink-scroll { position: relative; overflow: hidden; margin-top: 16px; }
-    .drink-track { display: flex; gap: 18px; width: max-content; animation: drinkScroll 40s linear infinite; }
+    .drink-section {
+      margin-top: 40px;
+    }
+
+    .drink-note {
+      font-size: 13px;
+      opacity: 0.7;
+      margin-bottom: 10px;
+    }
+
+    .drink-scroll {
+      position: relative;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .drink-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: drinkScroll 40s linear infinite;
+    }
 
     .drink-card {
       min-width: 260px;
@@ -266,8 +343,19 @@
       box-shadow: 0 8px 18px rgba(0,0,0,0.55);
     }
 
-    .drink-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .drink-card-title { font-family: "Nanum Myeongjo", serif; font-size: 16px; color: #ffbe8f; white-space: nowrap; }
+    .drink-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .drink-card-title {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 16px;
+      color: #ffbe8f;
+      white-space: nowrap;
+    }
 
     .drink-card-badge {
       font-size: 11px;
@@ -279,23 +367,60 @@
       white-space: nowrap;
     }
 
-    .drink-card-sub { font-size: 12px; opacity: 0.65; margin-bottom: 10px; }
-    .drink-list { list-style: none; font-size: 13px; }
+    .drink-card-sub {
+      font-size: 12px;
+      opacity: 0.65;
+      margin-bottom: 10px;
+    }
 
-    .drink-list li { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; gap: 10px; }
-    .drink-name { opacity: 0.9; white-space: nowrap; }
-    .drink-price { color: #ff9c64; white-space: nowrap; font-weight: 600; font-size: 13px; }
+    .drink-list {
+      list-style: none;
+      font-size: 13px;
+    }
+
+    .drink-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+      gap: 10px;
+    }
+
+    .drink-name {
+      opacity: 0.9;
+      white-space: nowrap;
+    }
+
+    .drink-price {
+      color: #ff9c64;
+      white-space: nowrap;
+      font-weight: 600;
+      font-size: 13px;
+    }
 
     @keyframes drinkScroll {
-      0% { transform: translateX(0); }
+      0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    .drink-scroll:hover .drink-track { animation-play-state: paused; }
+    /* 마우스 올리면 주류 라인 멈춤 */
+    .drink-scroll:hover .drink-track {
+      animation-play-state: paused;
+    }
 
     /* 갤러리 : 끝과 처음이 자연스럽게 이어지는 무한 스크롤 */
-    .gallery-scroll { position: relative; overflow: hidden; margin-top: 24px; }
-    .gallery-track { display: flex; gap: 10px; width: max-content; animation: galleryScroll 40s linear infinite; }
+    .gallery-scroll {
+      position: relative;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    .gallery-track {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+      animation: galleryScroll 40s linear infinite;
+    }
 
     .gallery-box {
       position: relative;
@@ -308,7 +433,12 @@
       cursor: pointer;
     }
 
-    .gallery-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .gallery-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     .gallery-box span {
       position: absolute;
@@ -322,11 +452,14 @@
     }
 
     @keyframes galleryScroll {
-      0% { transform: translateX(0); }
+      0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
 
-    .gallery-scroll:hover .gallery-track { animation-play-state: paused; }
+    /* 마우스 올리면 갤러리 멈춤 */
+    .gallery-scroll:hover .gallery-track {
+      animation-play-state: paused;
+    }
 
     /* 지도 래퍼 (PC용) */
     .map-wrap {
@@ -341,13 +474,20 @@
 
     .map-wrap iframe {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       border: 0;
     }
 
     /* 지도 모바일 대체 링크 */
-    .map-fallback { display: none; margin-top: 14px; font-size: 13px; opacity: 0.9; }
+    .map-fallback {
+      display: none;
+      margin-top: 14px;
+      font-size: 13px;
+      opacity: 0.9;
+    }
 
     .btn-map {
       display: inline-block;
@@ -362,10 +502,17 @@
       transition: 0.2s;
     }
 
-    .btn-map:hover { background: rgba(255,184,138,0.18); }
+    .btn-map:hover {
+      background: rgba(255,184,138,0.18);
+    }
 
     /* 버튼 모음 */
-    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
 
     .btn-small {
       display: inline-block;
@@ -379,7 +526,9 @@
       transition: 0.2s;
     }
 
-    .btn-small:hover { background: rgba(255,184,138,0.18); }
+    .btn-small:hover {
+      background: rgba(255,184,138,0.18);
+    }
 
     footer {
       text-align: center;
@@ -399,14 +548,44 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
-    .visitor-title { font-family: "Nanum Myeongjo", serif; font-size: 20px; color: #ffb88a; margin-bottom: 10px; }
+    .visitor-title {
+      font-family: "Nanum Myeongjo", serif;
+      font-size: 20px;
+      color: #ffb88a;
+      margin-bottom: 10px;
+    }
 
-    .visitor-items { display: flex; justify-content: center; gap: 40px; margin-top: 8px; margin-bottom: 8px; }
+    .visitor-items {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
 
-    .visitor-item { display: flex; flex-direction: column; gap: 4px; min-width: 110px; }
-    .visitor-label { font-size: 13px; opacity: 0.8; }
-    .visitor-number { font-size: 22px; font-weight: 700; color: #ffcf9a; }
-    .visitor-note { font-size: 11px; opacity: 0.6; margin-top: 6px; }
+    .visitor-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 110px;
+    }
+
+    .visitor-label {
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    .visitor-number {
+      font-size: 22px;
+      font-weight: 700;
+      color: #ffcf9a;
+    }
+
+    .visitor-note {
+      font-size: 11px;
+      opacity: 0.6;
+      margin-top: 6px;
+    }
 
     /* 이미지 확대 모달 */
     .modal {
@@ -420,21 +599,49 @@
       align-items: center;
     }
 
-    .modal-img { max-width: 92%; max-height: 92%; border-radius: 14px; box-shadow: 0 0 25px rgba(0,0,0,0.7); }
-    .modal-close { position: absolute; top: 20px; right: 30px; font-size: 40px; color: #fff; cursor: pointer; opacity: 0.8; }
-    .modal-close:hover { opacity: 1; }
+    .modal-img {
+      max-width: 92%;
+      max-height: 92%;
+      border-radius: 14px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.7);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 40px;
+      color: #fff;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+
+    .modal-close:hover {
+      opacity: 1;
+    }
 
     /* 반응형 */
     @media (max-width: 720px) {
-      header { padding: 8px 12px; }
-      .hero { padding: 120px 16px 110px; }
-      .hero h1 { font-size: 34px; }
+      header {
+        padding: 8px 12px;
+      }
 
-      .nav-toggle { display: block; }
+      .hero {
+        padding: 120px 16px 110px;
+      }
+
+      .hero h1 {
+        font-size: 34px;
+      }
+
+      .nav-toggle {
+        display: block;
+      }
 
       .nav-links {
         position: fixed;
-        top: 0; right: 0;
+        top: 0;
+        right: 0;
         width: 72%;
         max-width: 270px;
         height: 100vh;
@@ -449,13 +656,28 @@
         transition: transform 0.25s ease-out;
       }
 
-      .nav-links a { margin: 8px 0; font-size: 15px; color: #ffcfaa; opacity: 0.9; }
-      .nav-links.open { transform: translateX(0); }
+      .nav-links a {
+        margin: 8px 0;
+        font-size: 15px;
+        color: #ffcfaa;
+        opacity: 0.9;
+      }
 
-      .map-wrap { display: none; }
-      .map-fallback { display: block; }
+      .nav-links.open {
+        transform: translateX(0);
+      }
 
-      .visitor-items { flex-direction: column; gap: 10px; }
+      .map-wrap {
+        display: none;
+      }
+      .map-fallback {
+        display: block;
+      }
+
+      .visitor-items {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
@@ -480,8 +702,7 @@
       </button>
 
       <nav class="nav-links">
-        <a href="#menu-section">대표메뉴</a>
-        <a href="#full-menu">전체메뉴판</a>
+        <a href="#menu-section">메뉴</a>
         <a href="#set">점심/세트</a>
         <a href="#delivery">배달·포장</a>
         <a href="#gallery">갤러리</a>
@@ -684,6 +905,7 @@
       </div>
     </div>
     <!-- ===== /주류 섹션 끝 ===== -->
+
   </section>
 
   <!-- 세트 -->
@@ -704,7 +926,8 @@
     <h2>배달 · 포장 안내</h2>
     <p class="subtitle">집이나 가게에서 편하게 연어당을 즐기실 수 있습니다.</p>
 
-    <p style="font-size:14px; opacity:0.85;"></p>
+    <p style="font-size:14px; opacity:0.85;">
+    </p>
 
     <div class="btn-row" style="margin-top:16px;">
       <a class="btn-small" href="https://s.baemin.com/bi000vfRe9O9k" target="_blank">배달의민족 주문하기</a>
@@ -720,6 +943,7 @@
 
     <div class="gallery-scroll">
       <div class="gallery-track">
+        <!-- 새로 추가된 삿포로 라이트박스 -->
         <div class="gallery-box">
           <img src="대표이미지.jpg" alt="연어당">
           <span>연어당</span>
@@ -730,6 +954,7 @@
           <span>삿포로 생맥주 바</span>
         </div>
 
+        <!-- 1세트 기존 이미지들 -->
         <div class="gallery-box">
           <img src="육사시미.jpg" alt="육사시미">
           <span>육사시미</span>
@@ -760,7 +985,7 @@
           <span>새우초밥</span>
         </div>
 
-        <!-- 2세트 복제 -->
+        <!-- 2세트 (무한 스크롤용 복제) -->
         <div class="gallery-box">
           <img src="대표이미지.jpg" alt="연어당">
           <span>연어당</span>
@@ -883,8 +1108,13 @@
       });
     });
 
-    modalClose.onclick = () => { modal.style.display = "none"; };
-    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+    modalClose.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
 
     // 모바일 햄버거 메뉴
     const navToggle = document.querySelector(".nav-toggle");
@@ -905,7 +1135,9 @@
 
     // === 방문자 카운터 ===
     (function () {
-      if (!window.localStorage || !window.sessionStorage) return;
+      if (!window.localStorage || !window.sessionStorage) {
+        return;
+      }
 
       const todayEl = document.getElementById("today-visitors");
       const totalEl = document.getElementById("total-visitors");
@@ -918,6 +1150,7 @@
       let todayCount = Number(localStorage.getItem("yeonodang_today_count") || "0");
       const lastDate = localStorage.getItem("yeonodang_last_visit_date");
 
+      // 날짜가 바뀌었으면 오늘 카운트 리셋
       if (lastDate !== todayStr) {
         todayCount = 0;
         localStorage.setItem("yeonodang_today_count", "0");
@@ -925,6 +1158,7 @@
         sessionStorage.removeItem("yeonodang_visited_today");
       }
 
+      // 오늘 이 브라우저에서 첫 방문이면 1 증가
       if (!sessionStorage.getItem("yeonodang_visited_today")) {
         total += 1;
         todayCount += 1;
@@ -940,13 +1174,13 @@
   </script>
 
 </body>
-
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJK3T41NLH"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-PJK3T41NLH');
 </script>
 </html>
