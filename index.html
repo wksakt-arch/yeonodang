@@ -8,9 +8,9 @@
   <!-- 폰트 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
 
-  <!-- Google tag (gtag.js) : HEAD 안에 두는 게 정석 -->
+  <!-- Google Analytics (유입 시간대 확인용) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PJK3T41NLH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -20,27 +20,27 @@
   </script>
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-    /* 전체 분위기 */
     body {
       font-family: "Noto Serif KR", serif;
       background: radial-gradient(circle at top, #2b1a14 0, #120f14 45%, #0b090e 100%);
       color: #f3ece5;
       line-height: 1.7;
     }
-    a { text-decoration: none; color: inherit; }
 
-    /* 상단 네비 */
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
     header {
       position: sticky;
       top: 0;
-      z-index: 999;
-      background: rgba(10, 8, 10, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 188, 150, 0.25);
+      z-index: 1000;
+      background: rgba(10,8,10,0.95);
+      border-bottom: 1px solid rgba(255,184,138,0.25);
       padding: 10px 16px;
     }
+
     .nav {
       max-width: 1100px;
       margin: 0 auto;
@@ -49,1105 +49,324 @@
       align-items: center;
       font-family: "Nanum Myeongjo", serif;
     }
+
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 22px;
       font-weight: 700;
       letter-spacing: 0.12em;
       color: #ffb48b;
-      display: flex;
-      align-items: center;
-      gap: 10px;
       white-space: nowrap;
     }
+
     .logo-badge {
       width: 32px;
       height: 32px;
       border-radius: 50%;
       background: linear-gradient(135deg, #ffb48b, #ff8c5a);
+      color: #120f14;
+      font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #0f0f12;
-      font-weight: 800;
-      font-size: 15px;
-      border: 2px solid #0f0f12;
     }
 
-    /* 네비 링크 (데스크탑) */
-    .nav-links { display: flex; align-items: center; }
-    .nav-links a {
-      margin-left: 18px;
+    nav {
+      display: flex;
+      gap: 18px;
       font-size: 15px;
-      opacity: 0.8;
-      transition: 0.2s;
-      white-space: nowrap;
     }
-    .nav-links a:hover { opacity: 1; }
 
-    /* 모바일 햄버거 버튼 */
+    nav a { opacity: 0.8; }
+    nav a:hover { opacity: 1; }
+
+    /* 모바일 햄버거 */
     .nav-toggle {
       display: none;
-      width: 34px;
-      height: 30px;
-      border: none;
       background: none;
+      border: none;
       cursor: pointer;
-      padding: 0;
-      margin-left: 8px;
     }
+
     .nav-toggle span {
       display: block;
+      width: 26px;
       height: 2px;
       background: #ffb48b;
       margin: 6px 0;
-      transition: 0.25s;
     }
-    .nav-toggle.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .nav-toggle.open span:nth-child(2) { opacity: 0; }
-    .nav-toggle.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* 히어로 */
+    /* ===== HERO ===== */
     .hero {
-      position: relative;
-      text-align: center;
-      padding: 150px 20px 140px;
-      overflow: hidden;
-      color: #fff;
       min-height: calc(100vh - 70px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 140px 20px 120px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,140,90,0.4), rgba(3,2,4,0.92)),
+        url("izakaya.png") center bottom / cover no-repeat;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("izakaya.png");
-      background-size: cover;
-      background-position: center bottom;
-      filter: brightness(0.4) saturate(1.05);
-      z-index: -2;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(255,140,90,0.4), rgba(3,2,4,0.92));
-      opacity: 0.95;
-      z-index: -1;
-    }
-    .hero-inner { position: relative; max-width: 760px; margin: 0 auto; padding-top: 20px; }
+
     .hero h1 {
       font-family: "Nanum Myeongjo", serif;
       font-size: 46px;
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      margin-bottom: 16px;
       color: #ffe7d5;
-      text-shadow: 0 0 14px rgba(0,0,0,0.7);
-    }
-    .hero-sub { display: block; margin-top: 6px; font-size: 30px; }
-    .hero-brand { display: block; margin-top: 10px; font-size: 32px; }
-    .hero h1 span { color: #ffb48b; }
-    .hero p {
-      font-size: 17px;
-      opacity: 0.95;
-      margin-bottom: 26px;
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+      margin-bottom: 14px;
     }
 
-    .btn-primary, .btn-outline {
-      display: inline-block;
-      padding: 13px 26px;
-      border-radius: 999px;
-      font-family: "Nanum Myeongjo", serif;
-      font-size: 15px;
-      letter-spacing: 0.05em;
-      margin: 6px 4px;
-      border: 1px solid #ffb48b;
-      cursor: pointer;
-      transition: 0.2s;
+    .hero h1 span {
+      display: block;
+      font-size: 28px;
+      color: #ffb48b;
+      margin-top: 6px;
     }
+
+    .hero p {
+      font-size: 17px;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 15px;
+      border: 1px solid #ffb48b;
+      margin: 6px;
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, #ff8c5a, #ffb88a);
       color: #2a1710;
-      font-weight: bold;
+      font-weight: 700;
     }
+
     .btn-outline {
       background: rgba(0,0,0,0.35);
       color: #ffb48b;
     }
-    .btn-outline:hover { background: rgba(255,140,90,0.2); }
 
-    /* 공통 섹션 */
+    /* ===== SECTION ===== */
     section {
       max-width: 1100px;
       margin: 0 auto;
       padding: 70px 20px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
+
     h2 {
       font-family: "Nanum Myeongjo", serif;
       font-size: 28px;
       color: #ffb88a;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
-    .subtitle { font-size: 15px; opacity: 0.72; margin-bottom: 26px; }
 
-    /* 메뉴 카드 */
+    .subtitle {
+      font-size: 15px;
+      opacity: 0.7;
+      margin-bottom: 28px;
+    }
+
+    /* ===== MENU ===== */
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 22px;
     }
+
     .menu-card {
-      background: radial-gradient(circle at 0 0, #3d2117 0, #231514 48%, #1a1313 100%);
-      padding: 22px 22px 20px;
+      background: radial-gradient(circle at 0 0, #3d2117, #1a1313);
       border-radius: 18px;
-      border: 1px solid rgba(255,210,170,0.22);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.6);
-      position: relative;
-      overflow: hidden;
+      padding: 22px;
+      border: 1px solid rgba(255,210,170,0.2);
     }
-    .menu-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(135deg, rgba(255,255,255,0.06) 0, transparent 30%, transparent 70%, rgba(0,0,0,0.45) 100%);
-      opacity: 0.35;
-      pointer-events: none;
-    }
-    .menu-top-line {
-      width: 40px;
-      height: 3px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #ffb48b, transparent);
-      margin-bottom: 10px;
-    }
-    .menu-name { font-size: 17px; font-weight: 600; margin-bottom: 4px; color: #ffe7d5; }
-    .menu-price { color: #ff9c64; font-weight: 700; margin-bottom: 8px; font-size: 15px; }
-    .menu-desc { font-size: 14px; opacity: 0.8; }
-    .menu-tag { margin-top: 6px; font-size: 12px; opacity: 0.65; }
 
-    /* ===== 주류 섹션 : 가로 스크롤 + 무한반복 ===== */
-    .drink-section { margin-top: 40px; }
-    .drink-note { font-size: 13px; opacity: 0.7; margin-bottom: 10px; }
-    .drink-scroll { position: relative; overflow: hidden; margin-top: 16px; }
-    .drink-track {
-      display: flex;
-      gap: 18px;
-      width: max-content;
-      animation: drinkScroll 40s linear infinite;
+    .menu-name {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
-    .drink-card {
-      min-width: 260px;
-      max-width: 260px;
-      background: radial-gradient(circle at 0 0, #332018 0, #1f1412 50%, #181012 100%);
-      border-radius: 18px;
-      padding: 18px 18px 16px;
-      border: 1px solid rgba(255,210,170,0.18);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.55);
-    }
-    .drink-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-    .drink-card-title {
-      font-family: "Nanum Myeongjo", serif;
-      font-size: 16px;
-      color: #ffbe8f;
-      white-space: nowrap;
-    }
-    .drink-card-badge {
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,210,170,0.6);
-      color: #ffcfaa;
-      background: rgba(0,0,0,0.3);
-      white-space: nowrap;
-    }
-    .drink-card-sub { font-size: 12px; opacity: 0.65; margin-bottom: 10px; }
-    .drink-list { list-style: none; font-size: 13px; }
-    .drink-list li { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; gap: 10px; }
-    .drink-name { opacity: 0.9; white-space: nowrap; }
-    .drink-price { color: #ff9c64; white-space: nowrap; font-weight: 600; font-size: 13px; }
-    @keyframes drinkScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .drink-scroll:hover .drink-track { animation-play-state: paused; }
 
-    /* 갤러리 : 무한 스크롤 */
-    .gallery-scroll { position: relative; overflow: hidden; margin-top: 24px; }
-    .gallery-track {
-      display: flex;
-      gap: 10px;
-      width: max-content;
-      animation: galleryScroll 40s linear infinite;
+    .menu-price {
+      color: #ff9c64;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
-    .gallery-box {
-      position: relative;
-      flex: 0 0 260px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: #26262c;
+
+    .menu-desc {
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .gallery img {
       height: 150px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
-      cursor: pointer;
+      border-radius: 14px;
+      object-fit: cover;
+      flex: 0 0 auto;
     }
-    .gallery-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .gallery-box span {
-      position: absolute;
-      left: 10px;
-      bottom: 8px;
-      padding: 4px 10px;
-      font-size: 12px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.6);
-      color: #fce3cf;
-    }
-    @keyframes galleryScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .gallery-scroll:hover .gallery-track { animation-play-state: paused; }
 
-    /* 지도 */
+    /* ===== MAP ===== */
     .map-wrap {
       position: relative;
-      width: 100%;
       padding-bottom: 56.25%;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-      border: 1px solid rgba(255,255,255,0.08);
     }
+
     .map-wrap iframe {
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       border: 0;
     }
-    .map-fallback {
-      display: none;
-      margin-top: 14px;
-      font-size: 13px;
-      opacity: 0.9;
-    }
-    .btn-map {
-      display: inline-block;
-      margin-top: 6px;
-      padding: 10px 18px;
-      border-radius: 999px;
-      font-size: 14px;
-      border: 1px solid rgba(255,184,138,0.7);
-      background: rgba(0,0,0,0.35);
-      color: #ffcfaa;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-map:hover { background: rgba(255,184,138,0.18); }
 
-    /* 버튼 모음 */
-    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-    .btn-small {
-      display: inline-block;
-      padding: 9px 16px;
-      border-radius: 999px;
-      font-size: 13px;
-      border: 1px solid rgba(255,184,138,0.6);
-      background: rgba(0,0,0,0.35);
-      color: #ffcfaa;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .btn-small:hover { background: rgba(255,184,138,0.18); }
-
+    /* ===== FOOTER ===== */
     footer {
       text-align: center;
       padding: 30px;
       font-size: 12px;
       opacity: 0.55;
-      font-family: "Nanum Myeongjo", serif;
     }
 
-    /* 이미지 확대 모달 */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      inset: 0;
-      background-color: rgba(0,0,0,0.85);
-      backdrop-filter: blur(4px);
-      justify-content: center;
-      align-items: center;
-    }
-    .modal-img { max-width: 92%; max-height: 92%; border-radius: 14px; box-shadow: 0 0 25px rgba(0,0,0,0.7); }
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      font-size: 40px;
-      color: #fff;
-      cursor: pointer;
-      opacity: 0.8;
-    }
-    .modal-close:hover { opacity: 1; }
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      nav {
+        position: fixed;
+        right: 0;
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        background: rgba(10,8,10,0.97);
+        flex-direction: column;
+        padding: 80px 20px;
+        transform: translateX(100%);
+        transition: 0.3s;
+      }
 
-    /* =========================
-       이벤트 팝업 (PROMO)
-    ========================== */
-    .promo-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 10000;
-      background: rgba(0,0,0,0.72);
-      backdrop-filter: blur(4px);
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-    }
-    .promo-card {
-      width: 100%;
-      max-width: 520px;
-      background: radial-gradient(circle at 0 0, #3a2319 0, #1d1413 55%, #120f14 100%);
-      border: 1px solid rgba(255,210,170,0.22);
-      border-radius: 18px;
-      box-shadow: 0 18px 45px rgba(0,0,0,0.7);
-      overflow: hidden;
-      position: relative;
-    }
-    .promo-top {
-      padding: 18px 18px 12px;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: flex-start;
-    }
-    .promo-title {
-      font-family: "Nanum Myeongjo", serif;
-      font-size: 20px;
-      color: #ffcfaa;
-      line-height: 1.25;
-    }
-    .promo-badge {
-      white-space: nowrap;
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,184,138,0.7);
-      color: #ffe7d5;
-      background: rgba(0,0,0,0.25);
-      margin-top: 2px;
-    }
-    .promo-body { padding: 14px 18px 16px; }
-    .promo-copy { font-size: 14px; opacity: 0.92; margin-bottom: 12px; }
-    .promo-strong {
-      margin-top: 8px;
-      display: inline-block;
-      font-size: 16px;
-      color: #ffb88a;
-      font-weight: 700;
-    }
-    .promo-rule {
-      margin-top: 10px;
-      font-size: 12px;
-      opacity: 0.72;
-      line-height: 1.6;
-    }
-    .promo-code-box {
-      margin-top: 12px;
-      padding: 12px 12px;
-      border-radius: 14px;
-      background: rgba(0,0,0,0.25);
-      border: 1px dashed rgba(255,210,170,0.35);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
-    .promo-code-label { font-size: 12px; opacity: 0.8; }
-    .promo-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      color: #ffcfaa;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      font-size: 14px;
-      white-space: nowrap;
-    }
-    .promo-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
-    }
-    .promo-btn {
-      flex: 1 1 140px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,184,138,0.6);
-      background: rgba(0,0,0,0.30);
-      color: #ffcfaa;
-      cursor: pointer;
-      font-size: 13px;
-      transition: 0.2s;
-      text-align: center;
-    }
-    .promo-btn:hover { background: rgba(255,184,138,0.16); }
-    .promo-btn-primary {
-      background: linear-gradient(135deg, #ff8c5a, #ffb88a);
-      color: #2a1710;
-      border: 1px solid rgba(255,184,138,0.35);
-      font-weight: 700;
-    }
-    .promo-btn-primary:hover { filter: brightness(1.03); }
-
-    .promo-close-x {
-      border: none;
-      background: transparent;
-      color: rgba(255,255,255,0.85);
-      font-size: 22px;
-      cursor: pointer;
-      line-height: 1;
-      padding: 2px 6px;
-    }
-    .promo-close-x:hover { color: #fff; }
-
-    /* 직원 확인용: 코드 크게 보기 */
-    .promo-code-full {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 11000;
-      background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(6px);
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      text-align: center;
-    }
-    .promo-code-full-inner {
-      width: 100%;
-      max-width: 620px;
-      border-radius: 18px;
-      background: rgba(18,15,20,0.85);
-      border: 1px solid rgba(255,210,170,0.25);
-      box-shadow: 0 18px 60px rgba(0,0,0,0.8);
-      padding: 22px 16px;
-    }
-    .promo-code-full-title {
-      font-family: "Nanum Myeongjo", serif;
-      color: #ffcfaa;
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-    .promo-code-full-code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 42px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      color: #ffb88a;
-      margin: 8px 0 6px;
-      word-break: break-word;
-    }
-    .promo-code-full-note {
-      font-size: 12px;
-      opacity: 0.75;
-      margin-bottom: 14px;
-    }
-    .promo-code-full-close {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,184,138,0.6);
-      background: rgba(0,0,0,0.35);
-      color: #ffcfaa;
-      cursor: pointer;
-      font-size: 13px;
-    }
-    .promo-code-full-close:hover { background: rgba(255,184,138,0.16); }
-
-    /* 반응형 */
-    @media (max-width: 720px) {
-      header { padding: 8px 12px; }
-      .hero { padding: 120px 16px 110px; }
-      .hero h1 { font-size: 34px; }
+      nav.open { transform: translateX(0); }
 
       .nav-toggle { display: block; }
 
-      .nav-links {
-        position: fixed;
-        top: 0;
-        right: 0;
-        width: 72%;
-        max-width: 270px;
-        height: 100vh;
-        flex-direction: column;
-        align-items: flex-start;
-        background: rgba(10, 8, 10, 0.97);
-        padding: 80px 24px 24px;
-        border-bottom-left-radius: 24px;
-        border-left: 1px solid rgba(255,188,150,0.25);
-        box-shadow: -6px 0 18px rgba(0,0,0,0.8);
-        transform: translateX(100%);
-        transition: transform 0.25s ease-out;
+      .hero {
+        padding: 110px 16px 90px;
       }
-      .nav-links a {
-        margin: 8px 0;
-        font-size: 15px;
-        color: #ffcfaa;
-        opacity: 0.9;
+
+      .hero h1 {
+        font-size: 34px;
       }
-      .nav-links.open { transform: translateX(0); }
 
-      .map-wrap { display: none; }
-      .map-fallback { display: block; }
+      .hero h1 span {
+        font-size: 22px;
+      }
 
-      .promo-code-full-code { font-size: 34px; }
+      .btn {
+        width: 100%;
+        max-width: 320px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 페이지 상단에서 #menu로 들어와도 히어로가 보이도록 하는 앵커 -->
-  <div id="menu"></div>
-
-  <!-- 네비 -->
-  <header>
-    <div class="nav">
-      <div class="logo">
-        <div class="logo-badge">家</div>
-        YEONODANG
-      </div>
-
-      <button class="nav-toggle" aria-label="메뉴 열기">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="nav-links">
-        <a href="#menu-section">메뉴</a>
-        <a href="#set">점심/세트</a>
-        <a href="#delivery">배달·포장</a>
-        <a href="#gallery">갤러리</a>
-        <a href="#location">오시는길</a>
-        <a href="#contact">문의</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- 히어로 -->
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>
-        연어당 본점<br>
-        <span class="hero-sub">연어 · 육회 전문점</span>
-        <span class="hero-brand">김포 장기동</span>
-      </h1>
-      <p>이자카야 감성 속에서 즐기는 연어당의 한 상.</p>
-
-      <a class="btn-primary" href="#menu-section">메뉴 보기</a>
-      <a class="btn-outline" href="#contact">예약 · 문의</a>
-    </div>
-  </section>
-
-  <!-- 대표 메뉴 -->
-  <section id="menu-section">
-    <h2>대표 메뉴</h2>
-    <p class="subtitle">연어당에서 가장 사랑받는 시그니처 메뉴입니다.</p>
-
-    <div class="menu-grid">
-      <div class="menu-card">
-        <div class="menu-top-line"></div>
-        <div class="menu-name">연어 모둠 사시미</div>
-        <div class="menu-price">小 ₩28,900 / 大 ₩51,900</div>
-        <div class="menu-desc">연어 특유의 고소함과 식감을 가장 만족스럽게 느낄 수 있는 한 상.</div>
-        <div class="menu-tag">노르웨이 연어 · 두툼한 컷</div>
-      </div>
-
-      <div class="menu-card">
-        <div class="menu-top-line"></div>
-        <div class="menu-name">연어 + 육회 한 상</div>
-        <div class="menu-price">小 ₩25,900 / 大 ₩42,900</div>
-        <div class="menu-desc">연어 사시미와 육회를 함께 즐기는 연어당 대표 구성.</div>
-        <div class="menu-tag">2–3인 추천 · 한 잔 하기 좋은 구성</div>
-      </div>
-
-      <div class="menu-card">
-        <div class="menu-top-line"></div>
-        <div class="menu-name">문어숙회</div>
-        <div class="menu-price">小 ₩38,900 / 大 ₩49,900</div>
-        <div class="menu-desc">신선한 문어의 식감을 살린 담백한 숙회 요리.</div>
-        <div class="menu-tag">신선함을 넘어 살아 숨 쉬는듯한 술안주 · 인기 메뉴</div>
-      </div>
-
-      <div class="menu-card">
-        <div class="menu-top-line"></div>
-        <div class="menu-name">한우 육사시미</div>
-        <div class="menu-price">小 ₩40,900 / 大 ₩53,900</div>
-        <div class="menu-desc">정직한 재료로 준비하는 한우 육사시미.</div>
-        <div class="menu-tag">치맛살을 사용한 부드러운 식감이 일 품</div>
-      </div>
+<header>
+  <div class="nav">
+    <div class="logo">
+      <div class="logo-badge">家</div>
+      YEONODANG
     </div>
 
-    <!-- ===== 주류 섹션 ===== -->
-    <div class="drink-section">
-      <h2>주류 메뉴</h2>
-      <p class="subtitle">연어당의 음식과 가장 잘 어울리는 한 잔을 골라보세요.</p>
-      <p class="drink-note">※ 실제 판매 가격과 구성은 매장 상황에 따라 달라질 수 있습니다.</p>
+    <button class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
 
-      <div class="drink-scroll">
-        <div class="drink-track">
-          <!-- 1세트 -->
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">일품진로 스페셜</div>
-              <div class="drink-card-badge">EVENT</div>
-            </div>
-            <div class="drink-card-sub">연어당만의 단독 상시 행사 가격</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">일품진로 25 (375ml)</span><span class="drink-price">₩20,000</span></li>
-              <li><span class="drink-name">일품진로 오크25 (375ml)</span><span class="drink-price">₩20,000</span></li>
-              <li><span class="drink-name">일품진로 오크43 (375ml)</span><span class="drink-price">₩49,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">생맥주 · 하이볼</div>
-            </div>
-            <div class="drink-card-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
-              <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
-              <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
-              <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">사케 · 니혼슈</div>
-            </div>
-            <div class="drink-card-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
-              <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
-              <li><span class="drink-name">간바레 오또상 (900ml)</span><span class="drink-price">₩38,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">프리미엄 사케</div>
-            </div>
-            <div class="drink-card-sub">특별한 날을 위한 셀렉션 사케</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">닷사이 준마이 다이긴죠23</span><span class="drink-price">₩290,000</span></li>
-              <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
-              <li><span class="drink-name">쿠보타 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
-              <li><span class="drink-name">월계관 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">소주 · 기타</div>
-            </div>
-            <div class="drink-card-sub">가성비 좋은 한 잔</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
-              <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
-              <li><span class="drink-name">청하</span><span class="drink-price">₩6,000</span></li>
-            </ul>
-          </div>
-
-          <!-- 2세트(복제) -->
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">일품진로 스페셜</div>
-              <div class="drink-card-badge">EVENT</div>
-            </div>
-            <div class="drink-card-sub">연어당만의 단독 상시 행사 가격</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">일품진로 25 (375ml)</span><span class="drink-price">₩20,000</span></li>
-              <li><span class="drink-name">일품진로 오크25 (375ml)</span><span class="drink-price">₩20,000</span></li>
-              <li><span class="drink-name">일품진로 오크43 (375ml)</span><span class="drink-price">₩49,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">생맥주 · 하이볼</div>
-            </div>
-            <div class="drink-card-sub">연어와 가장 잘 어울리는 기본 한 잔</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">삿포로 생맥주 400ml</span><span class="drink-price">₩7,000</span></li>
-              <li><span class="drink-name">하이볼 (산토리)</span><span class="drink-price">₩8,000</span></li>
-              <li><span class="drink-name">하이볼 (짐빔)</span><span class="drink-price">₩8,000</span></li>
-              <li><span class="drink-name">도쿠리 (잔사케)</span><span class="drink-price">₩8,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">사케 · 니혼슈</div>
-            </div>
-            <div class="drink-card-sub">연어, 육회와 잘 어울리는 정통 일본주</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">도로가메 이모 (50ml)</span><span class="drink-price">₩9,000</span></li>
-              <li><span class="drink-name">월계관 준마이750 (720ml)</span><span class="drink-price">₩35,000</span></li>
-              <li><span class="drink-name">간바레 오또상 (900ml)</span><span class="drink-price">₩38,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">프리미엄 사케</div>
-            </div>
-            <div class="drink-card-sub">특별한 날을 위한 셀렉션 사케</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">닷사이 준마이 다이긴죠23</span><span class="drink-price">₩290,000</span></li>
-              <li><span class="drink-name">쿠보다 만주</span><span class="drink-price">₩240,000</span></li>
-              <li><span class="drink-name">쿠보타 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
-              <li><span class="drink-name">월계관 준마이 다이긴죠</span><span class="drink-price">₩90,000</span></li>
-            </ul>
-          </div>
-
-          <div class="drink-card">
-            <div class="drink-card-header">
-              <div class="drink-card-title">소주 · 기타</div>
-            </div>
-            <div class="drink-card-sub">가성비 좋은 한 잔</div>
-            <ul class="drink-list">
-              <li><span class="drink-name">소주 (참이슬/진로 外)</span><span class="drink-price">₩4,000</span></li>
-              <li><span class="drink-name">맥주 (카스/테라/켈리)</span><span class="drink-price">₩5,000</span></li>
-              <li><span class="drink-name">청하</span><span class="drink-price">₩6,000</span></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 세트 -->
-  <section id="set">
-    <h2>점심 / 세트 메뉴</h2>
-    <p class="subtitle">연어당에서 인기 많은 런치 구성입니다.(11:30~15:00)</p>
-
-    <ul style="opacity:0.86; font-size:15px; line-height:1.9;">
-      <li>어묵우동 + 초밥(5p) 세트</li>
-      <li>새우튀김 우동 + 초밥(5p) 세트</li>
-      <li>연어덮밥 런치</li>
-      <li>육회덮밥 런치</li>
-    </ul>
-  </section>
-
-  <!-- 배달/포장 -->
-  <section id="delivery">
-    <h2>배달 · 포장 안내</h2>
-    <p class="subtitle">집이나 가게에서 편하게 연어당을 즐기실 수 있습니다.</p>
-
-    <div class="btn-row" style="margin-top:16px;">
-      <a class="btn-small" href="https://s.baemin.com/bi000vfRe9O9k" target="_blank">배달의민족 주문하기</a>
-      <a class="btn-small" href="https://web.coupangeats.com/share?storeId=936078&dishId&key=29becba2-57d1-425c-a1e0-39371331c449" target="_blank">쿠팡이츠 주문하기</a>
-      <a class="btn-small" href="#" target="_blank">땡겨요 주문하기</a>
-    </div>
-  </section>
-
-  <!-- 갤러리 -->
-  <section id="gallery">
-    <h2>갤러리</h2>
-    <p class="subtitle">매장 분위기와 음식 사진을 채워가는 공간입니다.</p>
-
-    <div class="gallery-scroll">
-      <div class="gallery-track">
-        <div class="gallery-box">
-          <img src="대표이미지.jpg" alt="연어당">
-          <span>연어당</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="사포로.jpg" alt="삿포로">
-          <span>삿포로 생맥주 바</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="육사시미.jpg" alt="육사시미">
-          <span>육사시미</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="문어숙회.jpg" alt="문어숙회">
-          <span>문어숙회</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
-          <span>우동 + 초밥</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="육회덮밥.jpg" alt="육회덮밥">
-          <span>육회덮밥</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="연어덮밥.jpg" alt="연어덮밥">
-          <span>연어덮밥</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="새우초밥.jpg" alt="새우초밥">
-          <span>새우초밥</span>
-        </div>
-
-        <!-- 2세트(복제) -->
-        <div class="gallery-box">
-          <img src="대표이미지.jpg" alt="연어당">
-          <span>연어당</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="사포로.jpg" alt="삿포로">
-          <span>삿포로 생맥주 바</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="육사시미.jpg" alt="육사시미">
-          <span>육사시미</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="문어숙회.jpg" alt="문어숙회">
-          <span>문어숙회</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="우동+초밥.jpg" alt="우동 + 초밥 세트">
-          <span>우동 + 초밥</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="육회덮밥.jpg" alt="육회덮밥">
-          <span>육회덮밥</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="연어덮밥.jpg" alt="연어덮밥">
-          <span>연어덮밥</span>
-        </div>
-
-        <div class="gallery-box">
-          <img src="새우초밥.jpg" alt="새우초밥">
-          <span>새우초밥</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 오시는 길 -->
-  <section id="location">
-    <h2>오시는 길</h2>
-    <p class="subtitle">김포 장기동 1872-7 1층</p>
-
-    <div class="map-wrap">
-      <iframe
-        src="https://map.naver.com/p/entry/place/1998769061?lng=126.6609581&lat=37.6509589&placePath=%2Fhome"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-
-    <div class="map-fallback">
-      일부 모바일 환경에서는 지도가 직접 표시되지 않을 수 있어,
-      네이버 지도로 연결하여 안내드립니다.<br>
-      <a class="btn-map" href="https://naver.me/FnVIgngj" target="_blank">
-        네이버 지도에서 길찾기
-      </a>
-    </div>
-  </section>
-
-  <!-- 예약 / 문의 -->
-  <section id="contact">
-    <h2>예약 / 문의</h2>
-    <p class="subtitle">편한 방식으로 연락 주세요.</p>
-
-    <ul style="opacity:0.86; font-size:14px; line-height:1.9; margin-bottom:12px;">
-      <li>전화: 010-6398-7669</li>
-      <li>단체 예약, 기념일 상차림, 포장 문의 가능</li>
-    </ul>
-
-    <div class="btn-row">
-      <a class="btn-small" href="tel:01063987669">전화걸기</a>
-      <a class="btn-small" href="http://pf.kakao.com/_qxkpYn/chat" target="_blank">카카오톡 채널 문의</a>
-      <a class="btn-small" href="https://m.place.naver.com/place/1998769061/home" target="_blank">네이버 톡톡 문의</a>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 연어당 · Yeonodang. All Rights Reserved.
-  </footer>
-
-  <!-- 이미지 확대 모달 -->
-  <div id="modal" class="modal">
-    <span class="modal-close">&times;</span>
-    <img id="modal-img" class="modal-img" alt="확대 이미지">
+    <nav id="navMenu">
+      <a href="#menu">메뉴</a>
+      <a href="#gallery">갤러리</a>
+      <a href="#location">오시는길</a>
+      <a href="#contact">문의</a>
+    </nav>
   </div>
+</header>
 
-  <!-- =========================
-       이벤트 팝업 (PROMO)
-  ========================== -->
-  <div id="promoModal" class="promo-overlay" role="dialog" aria-modal="true" aria-label="이벤트 안내">
-    <div class="promo-card">
-      <div class="promo-top">
-        <div>
-          <div class="promo-title">🎁 지금 방문 이벤트</div>
-          <div class="promo-badge">한정 혜택</div>
-        </div>
-        <button class="promo-close-x" id="promoCloseX" aria-label="닫기">×</button>
-      </div>
+<section class="hero">
+  <h1>
+    연어당 본점
+    <span>연어 · 육회 전문점</span>
+  </h1>
+  <p>김포 장기동, 조용히 한 잔 하기 좋은 연어집</p>
+  <a href="#menu" class="btn btn-primary">메뉴 보기</a>
+  <a href="#contact" class="btn btn-outline">예약 문의</a>
+</section>
 
-      <div class="promo-body">
-        <div class="promo-copy">
-          오늘 방문하신 분께<br>
-          <span class="promo-strong">소주 & 맥주 “한 병 무료”</span><br>
-          혜택을 드려요.
-        </div>
+<section id="menu">
+  <h2>대표 메뉴</h2>
+  <p class="subtitle">연어당의 시그니처</p>
 
-        <div class="promo-rule">
-          • 직원에게 아래 “쿠폰 코드” 화면을 보여주세요.<br>
-          • 1테이블 1회 / 네이버 리뷰이벤트 중복 불가<br>
-          • 재고/매장 상황에 따라 동일가 상품으로 대체될 수 있어요.
-        </div>
-
-        <div class="promo-code-box">
-          <div>
-            <div class="promo-code-label">오늘 쿠폰 코드</div>
-            <div class="promo-code" id="promoCodeText">YEONODANG-0000</div>
-          </div>
-          <button class="promo-btn" id="promoBigBtn" type="button">쿠폰 크게보기</button>
-        </div>
-
-        <div class="promo-actions">
-          <a class="promo-btn promo-btn-primary" href="#contact">예약/문의 바로가기</a>
-          <button class="promo-btn" id="promoHideToday" type="button">오늘 하루 안보기</button>
-          <button class="promo-btn" id="promoClose" type="button">닫기</button>
-        </div>
-      </div>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-name">연어 모둠 사시미</div>
+      <div class="menu-price">₩28,900 / ₩51,900</div>
+      <div class="menu-desc">두툼한 연어 본연의 맛</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-name">연어 + 육회 한 상</div>
+      <div class="menu-price">₩25,900 / ₩42,900</div>
+      <div class="menu-desc">가장 인기 있는 구성</div>
+    </div>
+    <div class="menu-card">
+      <div class="menu-name">문어숙회</div>
+      <div class="menu-price">₩38,900 / ₩49,900</div>
+      <div class="menu-desc">담백한 술안주</div>
     </div>
   </div>
+</section>
 
-  <!-- 직원 확인용 코드 크게보기 -->
-  <div id="promoCodeFull" class="promo-code-full" aria-hidden="true">
-    <div class="promo-code-full-inner">
-      <div class="promo-code-full-title">직원에게 이 화면을 보여주세요</div>
-      <div class="promo-code-full-code" id="promoCodeBig">YEONODANG-0000</div>
-      <div class="promo-code-full-note">※ 코드는 “오늘 날짜” 기준으로 자동 생성됩니다.</div>
-      <button class="promo-code-full-close" id="promoBigClose" type="button">닫기</button>
-    </div>
+<section id="gallery">
+  <h2>갤러리</h2>
+  <div class="gallery">
+    <img src="대표이미지.jpg">
+    <img src="육사시미.jpg">
+    <img src="문어숙회.jpg">
+    <img src="연어덮밥.jpg">
   </div>
+</section>
 
-  <!-- JS -->
-  <script>
-    // 갤러리 이미지 클릭 -> 모달
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modal-img");
-    const modalClose = document.querySelector(".modal-close");
+<section id="location">
+  <h2>오시는 길</h2>
+  <p class="subtitle">김포 장기동 1872-7</p>
+  <div class="map-wrap">
+    <iframe src="https://naver.me/FnVIgngj"></iframe>
+  </div>
+</section>
 
-    document.querySelectorAll(".gallery-box img").forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "flex";
-        modalImg.src = img.src;
-      });
-    });
+<section id="contact">
+  <h2>예약 · 문의</h2>
+  <p class="subtitle">전화 또는 톡톡</p>
+  <a href="tel:01063987669" class="btn btn-primary">전화하기</a>
+</section>
 
-    modalClose.onclick = () => { modal.style.display = "none"; };
-    modal.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+<footer>
+  © 2025 연어당 Yeonodang
+</footer>
 
-    // 모바일 햄버거 메뉴
-    const navToggle = document.querySelector(".nav-toggle");
-    const navLinks = document.querySelector(".nav-links");
+<script>
+  const toggle = document.getElementById("navToggle");
+  const nav = document.getElementById("navMenu");
 
-    navToggle.addEventListener("click", () => {
-      navToggle.classList.toggle("open");
-      navLinks.classList.toggle("open");
-    });
-
-    document.querySelectorAll(".nav-links a").forEach(link => {
-      link.addEventListener("click", () => {
-        navToggle.classList.remove("open");
-        navLinks.classList.remove("open");
-      });
-    });
-
-    // =========================
-    // 이벤트 팝업 로직
-    // - 기본: 접속 시 자동 노출
-    // - "오늘 하루 안보기": 오늘 날짜로 저장
-    // - 쿠폰코드: YEONODANG-MMDD (예: 1224)
-    // =========================
-    (function promoPopup(){
-      const overlay = document.getElementById("promoModal");
-      const closeBtn = document.getElementById("promoClose");
-      const closeX = document.getElementById("promoCloseX");
-      const hideTodayBtn = document.getElementById("promoHideToday");
-      const codeText = document.getElementById("promoCodeText");
-      const bigBtn = document.getElementById("promoBigBtn");
-
-      const full = document.getElementById("promoCodeFull");
-      const bigCode = document.getElementById("promoCodeBig");
-      const bigClose = document.getElementById("promoBigClose");
-
-      if (!overlay || !codeText || !bigCode) return;
-
-      const now = new Date();
-      const mm = String(now.getMonth() + 1).padStart(2, "0");
-      const dd = String(now.getDate()).padStart(2, "0");
-      const todayKey = `${now.getFullYear()}-${mm}-${dd}`;
-
-      const promoCode = `YEONODANG-${mm}${dd}`;
-      codeText.textContent = promoCode;
-      bigCode.textContent = promoCode;
-
-      const hideUntil = localStorage.getItem("yeonodang_promo_hide_until");
-      const shouldHide = (hideUntil === todayKey);
-
-      function openPromo(){
-        overlay.style.display = "flex";
-        document.body.style.overflow = "hidden";
-      }
-
-      function closePromo(){
-        overlay.style.display = "none";
-        document.body.style.overflow = "";
-      }
-
-      function openBig(){
-        full.style.display = "flex";
-        full.setAttribute("aria-hidden", "false");
-      }
-      function closeBig(){
-        full.style.display = "none";
-        full.setAttribute("aria-hidden", "true");
-      }
-
-      if (!shouldHide) openPromo();
-
-      closeBtn && closeBtn.addEventListener("click", closePromo);
-      closeX && closeX.addEventListener("click", closePromo);
-
-      // 오버레이 바깥 클릭 시 닫기
-      overlay.addEventListener("click", (e) => {
-        if (e.target === overlay) closePromo();
-      });
-
-      hideTodayBtn && hideTodayBtn.addEventListener("click", () => {
-        localStorage.setItem("yeonodang_promo_hide_until", todayKey);
-        closePromo();
-      });
-
-      bigBtn && bigBtn.addEventListener("click", openBig);
-      bigClose && bigClose.addEventListener("click", closeBig);
-      full.addEventListener("click", (e) => {
-        if (e.target === full) closeBig();
-      });
-    })();
-  </script>
+  toggle.onclick = () => nav.classList.toggle("open");
+</script>
 
 </body>
 </html>
