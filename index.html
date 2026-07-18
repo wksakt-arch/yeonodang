@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>연어당 — 연어·육회 전문점 김포 장기동</title>
 
+    <meta name="description" content="경기도 김포시 장기동 연어·육회 전문점 연어당. 노르웨이 연어 사시미, 한우 육사시미, 프리미엄 사케를 이자카야 감성 속에서 즐기세요. 런치 세트 11:30–15:00, 배달·포장 가능.">
+  <meta property="og:type" content="restaurant">
+  <meta property="og:title" content="연어당 — 연어·육회 전문점 김포 장기동">
+  <meta property="og:description" content="노르웨이 연어 사시미, 한우 육사시미, 프리미엄 사케를 이자카야 감성 속에서 즐기는 연어당의 한 상.">
+  <meta property="og:image" content="https://wksakt-arch.github.io/yeonodang/%EB%8C%80%ED%91%9C%EC%9D%B4%EB%AF%B8%EC%A7%80.jpg">
+  <meta property="og:url" content="https://wksakt-arch.github.io/yeonodang/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2306050a'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='34' fill='%23c8a878' text-anchor='middle'%3E%EC%97%B0%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+KR:wght@300;400;500&family=Nanum+Myeongjo:wght@400;700&display=swap" rel="stylesheet">
@@ -705,7 +713,18 @@
       flex-direction: column;
     }
 
-    .set-time-note {
+    .set-item-filler {
+  background: var(--black);
+}
+.set-item-filler:hover { background: var(--black); }
+
+.delivery-card.is-soon { cursor: default; }
+.delivery-card.is-soon:hover { background: var(--panel); }
+.delivery-card.is-soon .delivery-card-link { opacity: 0.45; }
+.delivery-card.is-soon:hover .delivery-card-link { opacity: 0.45; gap: 8px; }
+.delivery-card.is-soon .delivery-card-link::after { content: ""; }
+
+.set-time-note {
       font-family: "Cormorant Garamond", serif;
       font-size: 13px;
       letter-spacing: 0.16em;
@@ -1403,7 +1422,8 @@
         <div class="set-item-name">육회연어덮밥<br>런치</div>
         <div class="set-item-price">₩11,000</div>
       </div>
-    </div>
+          <div class="set-item set-item-filler" aria-hidden="true"></div>
+</div>
   </div>
 
   <!-- 갤러리 -->
@@ -1463,12 +1483,12 @@
         <div style="font-size:13px; color: var(--muted); margin-top: 6px;">Coupang Eats</div>
         <div class="delivery-card-link">주문하기</div>
       </a>
-      <a class="delivery-card" href="#" target="_blank" rel="noopener">
+            <div class="delivery-card is-soon" aria-disabled="true">
         <div class="delivery-card-icon">Platform 03</div>
         <div class="delivery-card-name">땡겨요</div>
         <div style="font-size:13px; color: var(--muted); margin-top: 6px;">Ddanggyeyo</div>
-        <div class="delivery-card-link">주문하기</div>
-      </a>
+                <div class="delivery-card-link">준비중</div>
+            </div>
     </div>
   </div>
 
