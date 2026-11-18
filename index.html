@@ -724,6 +724,47 @@
 .delivery-card.is-soon:hover .delivery-card-link { opacity: 0.45; gap: 8px; }
 .delivery-card.is-soon .delivery-card-link::after { content: ""; }
 
+/* ─── 연말 파티 플래터 ─── */
+.set-item-desc {
+  font-family: "Noto Serif KR", serif;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--muted);
+  margin-bottom: 18px;
+  flex: 1;
+}
+.set-item-tag {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold3);
+  margin-top: 10px;
+}
+.party-order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  border: 1px solid var(--border2);
+  background: rgba(200,168,120,0.06);
+  padding: 26px 30px;
+  margin-top: 16px;
+}
+.party-order-steps {
+  font-family: "Noto Serif KR", serif;
+  font-size: 14px;
+  line-height: 1.9;
+  color: var(--ivory);
+}
+.party-order-steps b { color: var(--gold2); font-weight: 500; }
+.party-order-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+@media (max-width: 720px) {
+  .party-order { padding: 22px 20px; }
+  .party-order-actions { width: 100%; flex-direction: column; }
+}
+
 .set-time-note {
       font-family: "Cormorant Garamond", serif;
       font-size: 13px;
@@ -1123,6 +1164,7 @@
     <nav>
       <a href="#menu-section">Menu</a>
       <a href="#set">Set</a>
+      <a href="#party">Party</a>
       <a href="#delivery">Order</a>
       <a href="#gallery">Gallery</a>
       <a href="#location">Visit</a>
@@ -1138,6 +1180,7 @@
   <div class="mobile-nav" id="mobile-nav">
     <a href="#menu-section">Menu</a>
     <a href="#set">Set Lunch</a>
+    <a href="#party">연말 플래터</a>
     <a href="#delivery">Delivery</a>
     <a href="#gallery">Gallery</a>
     <a href="#location">Visit</a>
@@ -1427,6 +1470,56 @@
   </div>
 
   <!-- 갤러리 -->
+  <hr class="section-divider">
+  <div class="section" id="party">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Year-end Party</div>
+        <h2>연말 <em>파티 플래터</em></h2>
+      </div>
+      <div class="lunch-time-badge">
+        <span class="lunch-time-icon">🎄</span>
+        <div>
+          <div class="lunch-time-label">PRE-ORDER · TAKEOUT</div>
+          <div class="lunch-time-value">12월 한정 · 3일 전 예약</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="set-list">
+      <div class="set-item">
+        <span class="set-item-num">01 · 2–3인</span>
+        <div class="set-item-name">홈파티 플래터 S</div>
+        <p class="set-item-desc">연어 모둠 사시미와 육회를 한 판에.<br>둘이서 가볍게 즐기는 연말 한 상.</p>
+        <div class="set-item-price">₩45,000</div>
+      </div>
+      <div class="set-item">
+        <span class="set-item-num">02 · 4–5인</span>
+        <div class="set-item-name">홈파티 플래터 M</div>
+        <p class="set-item-desc">연어 사시미, 육회, 연어초밥 10p.<br>가족 모임과 송년회에 알맞은 구성.</p>
+        <div class="set-item-price">₩79,000</div>
+        <div class="set-item-tag">Best</div>
+      </div>
+      <div class="set-item">
+        <span class="set-item-num">03 · 4–6인</span>
+        <div class="set-item-name">프리미엄 플래터</div>
+        <p class="set-item-desc">연어 사시미, 한우 육사시미, 문어숙회.<br>연어당 시그니처를 모두 담은 구성.</p>
+        <div class="set-item-price">₩129,000</div>
+      </div>
+    </div>
+
+    <div class="party-order">
+      <div class="party-order-steps">
+        <b>예약 방법</b> 카카오톡 또는 전화로 <b>날짜 · 시간 · 플래터 · 수량</b>을 남겨주세요.<br>
+        픽업 3일 전까지 예약 · 매장 포장 전용 · 수량 한정으로 조기 마감될 수 있습니다.
+      </div>
+      <div class="party-order-actions">
+        <a class="btn-gold" href="http://pf.kakao.com/_qxkpYn/chat" target="_blank" rel="noopener">카카오톡 예약</a>
+        <a class="btn-gold" href="tel:01063987669">전화 예약</a>
+      </div>
+    </div>
+  </div>
+
   <hr class="section-divider">
   <div class="section" id="gallery">
     <div class="section-header">
