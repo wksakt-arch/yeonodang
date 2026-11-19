@@ -396,6 +396,62 @@
     .modal img { max-width: 92vw; max-height: 86vh; object-fit: contain; box-shadow: var(--shadow); }
     .modal-close { position: absolute; top: 18px; right: 24px; font-size: 36px; font-family: var(--serif-en); background: none; border: 0; cursor: pointer; color: var(--ink); line-height: 1; }
 
+    /* ─── 함께 나누는 한 상 ─── */
+    .share-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 28px; align-items: stretch; }
+    .share-big { position: relative; overflow: hidden; min-height: 560px; box-shadow: var(--shadow); }
+    .share-big img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s; }
+    .share-big:hover img { transform: scale(1.04); }
+    .share-big .cap {
+      position: absolute; left: 24px; right: 24px; bottom: 24px;
+      background: rgba(255,253,249,0.94); backdrop-filter: blur(6px);
+      padding: 26px 28px; display: flex; justify-content: space-between; align-items: flex-end; gap: 20px;
+    }
+    .share-list { display: flex; flex-direction: column; gap: 28px; }
+    .share-row { display: grid; grid-template-columns: 46% 1fr; background: var(--card); flex: 1; box-shadow: 0 1px 0 var(--line); transition: box-shadow .4s, transform .4s; }
+    .share-row:hover { box-shadow: var(--shadow); transform: translateY(-4px); }
+    .share-row .ph { overflow: hidden; min-height: 168px; }
+    .share-row .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s; }
+    .share-row:hover .ph img { transform: scale(1.06); }
+    .share-row .tx { padding: 24px 26px; display: flex; flex-direction: column; justify-content: center; }
+    .share-kicker { font-family: var(--serif-en); font-size: 12px; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); }
+    .share-name { font-size: 22px; font-weight: 500; line-height: 1.35; margin-top: 4px; }
+    .share-desc { color: var(--ink2); font-size: 14px; margin-top: 6px; }
+    .share-price { font-family: var(--serif-en); font-size: 26px; color: var(--salmon); margin-top: 10px; white-space: nowrap; }
+    .share-price small { font-family: var(--serif-kr); font-size: 12px; color: var(--muted); margin-left: 4px; }
+    .share-big .share-name { font-size: 26px; }
+
+    /* ─── 하이볼 하이라이트 ─── */
+    .hb {
+      display: grid; grid-template-columns: 280px 1fr; margin-bottom: 40px; text-align: left;
+      background: var(--card); border: 1px solid var(--line); overflow: hidden;
+    }
+    .hb-img { min-height: 320px; position: relative; }
+    .hb-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hb-tx { padding: 48px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .hb .eyebrow::after { display: none; }
+    .hb-tx h3 { font-size: clamp(26px, 3vw, 34px); font-weight: 400; margin: 14px 0 10px; }
+    .hb-tx p { color: var(--ink2); font-size: 15px; max-width: 460px; }
+    .hb-opts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; align-items: center; }
+    .hb-opts span { border: 1px solid var(--line2); border-radius: 99px; padding: 6px 18px; font-size: 14px; }
+    .hb-opts b { font-family: var(--serif-en); font-weight: 400; font-size: 32px; color: var(--salmon); margin-left: auto; }
+
+    @media (max-width: 960px) {
+      .share-grid { grid-template-columns: 1fr; }
+      .share-big { min-height: 420px; }
+    }
+    @media (max-width: 720px) {
+      .share-big { min-height: 0; background: var(--card); box-shadow: 0 1px 0 var(--line); }
+      .share-big img { position: static; aspect-ratio: 4/3; height: auto; }
+      .share-big .cap { position: static; backdrop-filter: none; background: var(--card); padding: 24px 26px 28px; flex-direction: column; align-items: flex-start; gap: 4px; }
+      .share-row { grid-template-columns: 1fr; }
+      .share-row .ph { min-height: 0; aspect-ratio: 16/9; }
+      .hb { grid-template-columns: 1fr; }
+      .hb-img { min-height: 0; aspect-ratio: 4/3; }
+      .hb-img img { object-position: 50% 30%; }
+      .hb-tx { padding: 32px 24px; }
+      .hb-opts b { margin-left: 0; width: 100%; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .g-track { animation: none !important; }
@@ -620,6 +676,63 @@
     </div>
   </section>
 
+  <!-- 함께 나누는 한 상 -->
+  <section class="section" id="share">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="eyebrow">For the Table</span>
+          <h2>함께 나누는 <em>한 상</em></h2>
+        </div>
+        <p>여럿이 둘러앉아 나누기 좋은 메뉴들. 술 한잔과 곁들이면 더 좋습니다.</p>
+      </div>
+
+      <div class="share-grid">
+        <figure class="share-big reveal">
+          <img src="img/shrimp-set.jpg" alt="딱새우 + 단새우 세트" loading="lazy">
+          <figcaption class="cap">
+            <div>
+              <span class="share-kicker">Shrimp Set</span>
+              <div class="share-name">딱새우 + 단새우 세트</div>
+              <p class="share-desc">달큰한 딱새우와 단새우를 한 접시에</p>
+            </div>
+            <div class="share-price">40,000<small>원</small></div>
+          </figcaption>
+        </figure>
+
+        <div class="share-list">
+          <article class="share-row reveal">
+            <div class="ph"><img src="img/beef-nabe.jpg" alt="소고기 야채전골" loading="lazy"></div>
+            <div class="tx">
+              <span class="share-kicker">Beef Nabe</span>
+              <div class="share-name">소고기 야채전골</div>
+              <p class="share-desc">한우와 차돌박이, 신선한 야채와 버섯을 직접 우린 육수에</p>
+              <div class="share-price">32,000<small>원</small></div>
+            </div>
+          </article>
+          <article class="share-row reveal">
+            <div class="ph"><img src="img/altang.jpg" alt="알탕" loading="lazy"></div>
+            <div class="tx">
+              <span class="share-kicker">Spicy Roe Stew</span>
+              <div class="share-name">알탕</div>
+              <p class="share-desc">알 · 고니 · 동태 · 새우가 듬뿍, 얼큰하고 시원한 국물</p>
+              <div class="share-price">25,000<small>원</small></div>
+            </div>
+          </article>
+          <article class="share-row reveal">
+            <div class="ph"><img src="img/odengtang.jpg" alt="오뎅탕" loading="lazy"></div>
+            <div class="tx">
+              <span class="share-kicker">Oden Stew</span>
+              <div class="share-name">오뎅탕</div>
+              <p class="share-desc">시원한 국물에 쫄깃한 어묵, 꼬치어묵 2개 포함</p>
+              <div class="share-price">25,000<small>원</small></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- 메뉴판 -->
   <section class="section center" id="menu">
     <div class="wrap">
@@ -778,6 +891,15 @@
         <span class="eyebrow">日本酒 · 伝統酒 · Drinks</span>
         <h2>한 잔을 <em>곁들이다</em></h2>
       </div>
+      <div class="hb reveal">
+        <div class="hb-img"><img src="img/highball.jpg" alt="하이볼" loading="lazy"></div>
+        <div class="hb-tx">
+          <span class="eyebrow">Highball</span>
+          <h3>오늘도, <em style="font-style:normal;color:var(--salmon)">하이볼</em> 한 잔?</h3>
+          <p>레몬과 얼음 가득, 시원한 하이볼 한 잔으로 오늘의 피로를 날려보세요.</p>
+          <div class="hb-opts"><span>산토리 하이볼</span><span>짐빔 하이볼</span><b>8,000<small style="font-family:var(--serif-kr);font-size:13px;color:var(--muted);margin-left:4px">원</small></b></div>
+        </div>
+      </div>
       <div class="menu-book" style="text-align:left">
         <article class="panel reveal">
           <header class="panel-head">
@@ -889,22 +1011,32 @@
         <figure class="g-item"><img src="img/storefront.jpg" alt="연어당" loading="lazy"><figcaption>연어당</figcaption></figure>
         <figure class="g-item"><img src="img/yuk-sashimi.jpg" alt="한우 1++ 육사시미" loading="lazy"><figcaption>한우 1++ 육사시미</figcaption></figure>
         <figure class="g-item"><img src="img/octopus.jpg" alt="국내산 문어숙회" loading="lazy"><figcaption>국내산 문어숙회</figcaption></figure>
+        <figure class="g-item"><img src="img/shrimp-set.jpg" alt="딱새우 + 단새우 세트" loading="lazy"><figcaption>딱새우 + 단새우 세트</figcaption></figure>
+        <figure class="g-item"><img src="img/beef-nabe.jpg" alt="소고기 야채전골" loading="lazy"><figcaption>소고기 야채전골</figcaption></figure>
         <figure class="g-item"><img src="img/salmon-don.jpg" alt="연어덮밥" loading="lazy"><figcaption>연어덮밥</figcaption></figure>
+        <figure class="g-item"><img src="img/altang.jpg" alt="알탕" loading="lazy"><figcaption>알탕</figcaption></figure>
         <figure class="g-item"><img src="img/yukhoe-don.jpg" alt="육회덮밥" loading="lazy"><figcaption>육회덮밥</figcaption></figure>
         <figure class="g-item"><img src="img/salmon-jang-don.jpg" alt="연어장덮밥" loading="lazy"><figcaption>연어장덮밥</figcaption></figure>
         <figure class="g-item"><img src="img/shrimp-sushi.jpg" alt="새우초밥" loading="lazy"><figcaption>새우초밥</figcaption></figure>
         <figure class="g-item"><img src="img/udon-sushi.jpg" alt="우동 · 초밥" loading="lazy"><figcaption>우동 · 초밥</figcaption></figure>
         <figure class="g-item"><img src="img/tempura-udon-sushi.jpg" alt="새우튀김우동 · 초밥" loading="lazy"><figcaption>새우튀김우동 · 초밥</figcaption></figure>
+        <figure class="g-item"><img src="img/odengtang.jpg" alt="오뎅탕" loading="lazy"><figcaption>오뎅탕</figcaption></figure>
+        <figure class="g-item"><img src="img/highball.jpg" alt="하이볼" loading="lazy"><figcaption>하이볼</figcaption></figure>
         <figure class="g-item"><img src="img/sapporo.jpg" alt="삿포로 생맥주" loading="lazy"><figcaption>삿포로 생맥주</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/storefront.jpg" alt="연어당" loading="lazy"><figcaption>연어당</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/yuk-sashimi.jpg" alt="한우 1++ 육사시미" loading="lazy"><figcaption>한우 1++ 육사시미</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/octopus.jpg" alt="국내산 문어숙회" loading="lazy"><figcaption>국내산 문어숙회</figcaption></figure>
+        <figure class="g-item" aria-hidden="true"><img src="img/shrimp-set.jpg" alt="딱새우 + 단새우 세트" loading="lazy"><figcaption>딱새우 + 단새우 세트</figcaption></figure>
+        <figure class="g-item" aria-hidden="true"><img src="img/beef-nabe.jpg" alt="소고기 야채전골" loading="lazy"><figcaption>소고기 야채전골</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/salmon-don.jpg" alt="연어덮밥" loading="lazy"><figcaption>연어덮밥</figcaption></figure>
+        <figure class="g-item" aria-hidden="true"><img src="img/altang.jpg" alt="알탕" loading="lazy"><figcaption>알탕</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/yukhoe-don.jpg" alt="육회덮밥" loading="lazy"><figcaption>육회덮밥</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/salmon-jang-don.jpg" alt="연어장덮밥" loading="lazy"><figcaption>연어장덮밥</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/shrimp-sushi.jpg" alt="새우초밥" loading="lazy"><figcaption>새우초밥</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/udon-sushi.jpg" alt="우동 · 초밥" loading="lazy"><figcaption>우동 · 초밥</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/tempura-udon-sushi.jpg" alt="새우튀김우동 · 초밥" loading="lazy"><figcaption>새우튀김우동 · 초밥</figcaption></figure>
+        <figure class="g-item" aria-hidden="true"><img src="img/odengtang.jpg" alt="오뎅탕" loading="lazy"><figcaption>오뎅탕</figcaption></figure>
+        <figure class="g-item" aria-hidden="true"><img src="img/highball.jpg" alt="하이볼" loading="lazy"><figcaption>하이볼</figcaption></figure>
         <figure class="g-item" aria-hidden="true"><img src="img/sapporo.jpg" alt="삿포로 생맥주" loading="lazy"><figcaption>삿포로 생맥주</figcaption></figure>
     </div>
   </section>
